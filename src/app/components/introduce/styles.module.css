@@ -1,0 +1,59 @@
+.landingSection1 {
+  height: 300vh;
+  width: 100%;
+  background-color: #306ff8;
+  position: relative;
+}
+
+.contentWrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: white;
+  font-size: clamp(6rem, 12vw, 20rem);
+  letter-spacing: -0.025em;
+  vertical-align: middle;
+  padding-bottom: 200px;
+}
+
+.subtitle {
+  width: 100%;
+  color: white;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.team {
+  color: white;
+  font-weight: 300;
+  font-size: clamp(1rem, 4vw, 2rem);
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.monadDescription {
+  color: white;
+  font-weight: 400;
+  font-size: clamp(1rem, 4vw, 2rem);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.mobileBreak {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileBreak {
+    display: block;
+  }
+}

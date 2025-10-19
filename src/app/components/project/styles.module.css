@@ -1,0 +1,20 @@
+.projectSection {
+  min-height: 100vh;
+  background-color: #0c1529;
+  position: relative;
+}
+
+.projectSection .contentWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 200px 0;
+  justify-content: center;
+}
+
+.projectSection .title {
+  color: white;
+  font-weight: 600;
+  font-size: clamp(5rem, 12vw, 10rem);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
