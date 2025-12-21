@@ -1,0 +1,114 @@
+.section {
+  min-height: 200vh;
+  background: linear-gradient(to bottom, #14203b, #2f5dc5);
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  z-index: 101;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 80px;
+  font-weight: 700;
+  background: linear-gradient(to right, #ffffff, #dde6ff, #a7baf0);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.subtitle {
+  width: 100%;
+  color: white;
+  font-weight: 600;
+  font-size: 36px;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cardsContainer {
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+.card {
+  width: 618px;
+  height: 217px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.cardTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: inherit;
+}
+.cardDescription {
+  font-size: 28px;
+  font-weight: 400;
+  color: inherit;
+}
+
+.hiringButton {
+  width: 357px;
+  height: 105px;
+  background-color: #081d4d;
+  border-radius: 66px;
+  border: none;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  bottom: 50vh;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.hiringButton:hover {
+  background-color: #0a2456;
+  transform: translateX(-50%) scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .mobileBreak {
+    display: block;
+  }
+
+  .logoWrapper {
+    width: clamp(100px, 25vw, 150px);
+    max-height: clamp(50px, 12vw, 80px);
+  }
+}
+
+@media (max-width: 480px) {
+  .logoWrapper {
+    width: clamp(80px, 30vw, 120px);
+    max-height: clamp(40px, 15vw, 60px);
+  }
+}

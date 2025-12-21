@@ -1,8 +1,30 @@
-.landingSection1 {
-  height: 300vh;
-  width: 100%;
-  background-color: #306ff8;
+.section {
+  height: 600vh;
   position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.backgroundVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.startImage,
+.endImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .contentWrapper {
@@ -14,18 +36,50 @@
 }
 
 .title {
-  color: white;
-  font-size: clamp(6rem, 12vw, 20rem);
-  letter-spacing: -0.025em;
-  vertical-align: middle;
-  padding-bottom: 200px;
+  position: fixed;
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
+
+.logoLetter {
+  position: relative;
+}
+
+/* S */
+.logoLetter:nth-child(1) {
+  width: clamp(60px, 9vw, 121px);
+  height: clamp(80px, 12vw, 165px);
+}
+/* l */
+.logoLetter:nth-child(2) {
+  width: clamp(10px, 1.5vw, 18px);
+  height: clamp(80px, 12vw, 165px);
+}
+/* a */
+.logoLetter:nth-child(3) {
+  width: clamp(58px, 8.5vw, 117px);
+  height: clamp(60px, 9vw, 119px);
+}
+/* s */
+.logoLetter:nth-child(4) {
+  width: clamp(49px, 7vw, 99px);
+  height: clamp(60px, 9vw, 119px);
+}
+/* h */
+.logoLetter:nth-child(5) {
+  width: clamp(51px, 7.5vw, 103px);
+  height: clamp(80px, 12vw, 165px);
 }
 
 .subtitle {
   width: 100%;
   color: white;
   font-weight: 600;
-  font-size: clamp(1.5rem, 4vw, 4rem);
+  font-size: clamp(1.5rem, 4vw, 3rem);
   letter-spacing: 0.05em;
   margin-top: 1rem;
   text-align: center;
@@ -36,15 +90,6 @@
   font-weight: 300;
   font-size: clamp(1rem, 4vw, 2rem);
   letter-spacing: 0.05em;
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.monadDescription {
-  color: white;
-  font-weight: 400;
-  font-size: clamp(1rem, 4vw, 2rem);
-  letter-spacing: 0.05em;
   text-align: center;
 }
 
@@ -52,8 +97,53 @@
   display: none;
 }
 
+.logoGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.logoGridWrapper {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoWrapper {
+  width: clamp(120px, 15vw, 200px);
+  position: relative;
+  aspect-ratio: 2.25 / 1;
+  max-height: clamp(40px, 6vw, 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.logoImage {
+  object-fit: contain;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 @media (max-width: 768px) {
   .mobileBreak {
     display: block;
+  }
+
+  .logoWrapper {
+    width: clamp(100px, 25vw, 150px);
+    max-height: clamp(50px, 12vw, 80px);
+  }
+}
+
+@media (max-width: 480px) {
+  .logoWrapper {
+    width: clamp(80px, 30vw, 120px);
+    max-height: clamp(40px, 15vw, 60px);
   }
 }

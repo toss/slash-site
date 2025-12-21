@@ -1,20 +1,102 @@
-.projectSection {
+.section {
   min-height: 100vh;
   background-color: #0c1529;
   position: relative;
+  width: 100vw;
+  overflow: hidden;
 }
 
-.projectSection .contentWrapper {
+.contentWrapper {
   display: flex;
   flex-direction: column;
-  padding: 200px 0;
+  padding-top: 200px;
   justify-content: center;
 }
 
-.projectSection .title {
+.title {
   color: white;
   font-weight: 600;
-  font-size: clamp(5rem, 12vw, 10rem);
+  font-size: 48px;
   letter-spacing: 0.05em;
   text-align: center;
+}
+
+.projectList {
+  width: 80%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+
+.projectItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  width: 100%;
+}
+
+.projectTitle {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.projectContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.projectBottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.projectDescription {
+  font-size: 20px;
+  font-weight: 400;
+  color: #b0b8c1;
+  line-height: 1.5;
+}
+
+.projectLinks a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  text-decoration: underline;
+  font-size: 22px;
+}
+
+.projectStar {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .projectBottom {
+    flex-direction: column;
+  }
+  .projectTitle {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .projectDescription {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .projectLinks a {
+    font-size: 14px;
+  }
+
+  .projectLogo {
+    width: 100px;
+    height: 100px;
+  }
 }
