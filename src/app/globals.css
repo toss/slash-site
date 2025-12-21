@@ -4,6 +4,17 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overscroll-behavior: none;
+}
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;

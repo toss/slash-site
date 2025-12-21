@@ -4,6 +4,7 @@
   position: relative;
   width: 100vw;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 .sectionContent {

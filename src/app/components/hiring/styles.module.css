@@ -5,6 +5,8 @@
   position: relative;
   overflow: hidden;
   z-index: 101;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .contentWrapper {
