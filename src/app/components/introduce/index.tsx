@@ -30,9 +30,11 @@ export const IntroduceSection = () => {
   const startImageOpacity = useTransform(scrollYProgress, [0, 0.02], [1, 0]);
   const endImageOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
 
+  const VIDEO_THROTTLE_MS = 16; // 60fps
+  
   const updateVideo = useCallback(() => {
     const now = Date.now();
-    if (now - lastUpdateTime.current < 16) return;
+    if (now - lastUpdateTime.current < VIDEO_THROTTLE_MS) return;
     lastUpdateTime.current = now;
 
     if (videoRef.current && sectionRef.current) {

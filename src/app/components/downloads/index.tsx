@@ -4,24 +4,23 @@ import styles from "./styles.module.css";
 import { formatNumberWithUnit } from "../../utils/formatNumber";
 import { Separator } from "../ui/separator";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
-import { ReactElement } from "react";
-
-const data = [
-  { month: "Jan", downloads: 100 },
-  { month: "Feb", downloads: 110 },
-  { month: "Mar", downloads: 115 },
-  { month: "Apr", downloads: 120 },
-  { month: "May", downloads: 125 },
-  { month: "Jun", downloads: 130 },
-  { month: "Jul", downloads: 135 },
-  { month: "Aug", downloads: 140 },
-  { month: "Sep", downloads: 145 },
-  { month: "Oct", downloads: 155 },
-  { month: "Nov", downloads: 175 },
-  { month: "Dec", downloads: 220 },
-];
+import { ReactElement, Suspense } from "react";
+import { npmStats } from "../../../data/npm-stats";
 
 export const DownloadsSection = () => {
+  return (
+    <Suspense fallback={<></>}>
+      <Resolved />
+    </Suspense>
+  );
+};
+
+const Resolved = () => {
+  const totalDownloads = npmStats.totalDownloads;
+  const totalStars = npmStats.totalStars;
+  const totalDependents = npmStats.totalDependents;
+  const chartData = npmStats.monthlyData || [];
+
   return (
     <section className={styles.section}>
       <div className={styles.content}>
@@ -31,7 +30,7 @@ export const DownloadsSection = () => {
 
         <div className={styles.downloadsCountWrapper}>
           <DownloadsCountItem
-            count={110000}
+            count={totalStars}
             description={
               <span>
                 Total GitHub
@@ -41,7 +40,7 @@ export const DownloadsSection = () => {
             }
           />
           <DownloadsCountItem
-            count={110000}
+            count={totalDependents}
             description={
               <span>
                 GitHub
@@ -51,7 +50,7 @@ export const DownloadsSection = () => {
             }
           />
           <DownloadsCountItem
-            count={110000}
+            count={totalDownloads}
             description={
               <span>
                 Total NPM
@@ -65,11 +64,11 @@ export const DownloadsSection = () => {
           <div className={styles.chartWrapper}>
             <ResponsiveContainer width="100%" height={400}>
               <LineChart
-                data={data}
+                data={chartData}
                 margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
               >
-                <XAxis dataKey="month" hide />
-                <YAxis hide />
+                <XAxis dataKey="month" hide domain={["dataMin", "dataMax"]} />
+                <YAxis hide domain={["dataMin", "dataMax"]} />
                 <Line
                   type="monotone"
                   dataKey="downloads"

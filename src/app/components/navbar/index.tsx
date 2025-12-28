@@ -2,6 +2,9 @@ import { motion, useScroll, useTransform } from "motion/react";
 import styles from "./styles.module.css";
 import { useRouter } from "next/navigation";
 
+const NAVBAR_SCROLL_THRESHOLD = 470;
+const NAVBAR_FADE_END = 800;
+
 export const Navbar = ({
   scrollMotionEnabled = true,
 }: {
@@ -9,7 +12,7 @@ export const Navbar = ({
 }) => {
   const router = useRouter();
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [470, 800], [0, 1]);
+  const opacity = useTransform(scrollY, [NAVBAR_SCROLL_THRESHOLD, NAVBAR_FADE_END], [0, 1]);
 
   return (
     <>

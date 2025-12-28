@@ -1,7 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import styles from "./styles.module.css";
 import { LinkIcon } from "../ui/link-icon";
 import Image from "next/image";
+import { formatNumberWithUnit } from "../../utils/formatNumber";
+import { githubStats } from "../../../data/github-stats";
 
 export const ProjectItem = ({
   name,
@@ -18,20 +19,9 @@ export const ProjectItem = ({
   websiteUrl: string;
   githubUrl: string;
 }) => {
-  const { data: project, isLoading } = useQuery<{
-    stargazers_count: number;
-  }>({
-    queryKey: ["project", name],
-    queryFn: async () => {
-      const res = await fetch(`https://api.github.com/repos/toss${url}`);
-      return res.json();
-    },
-    staleTime: 60 * 60 * 1000, // 1 hour
-    gcTime: 60 * 60 * 1000, // 1 hour
-    enabled: false,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+  // as 제거 예정
+  const starCount =
+    githubStats[name as keyof typeof githubStats]?.stargazers_count || 0;
 
   return (
     <li className={styles.projectItem}>
@@ -48,14 +38,10 @@ export const ProjectItem = ({
           <p className={styles.projectDescription}>
             {description}
             <br />
-            {isLoading ? null : (
-              <>
-                <span className={styles.projectStar}>
-                  {project?.stargazers_count}
-                </span>{" "}
-                Github stars
-              </>
-            )}
+            <span className={styles.projectStar}>
+              {formatNumberWithUnit(starCount)}
+            </span>{" "}
+            Github stars
           </p>
           <div className={styles.projectLinks}>
             <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
