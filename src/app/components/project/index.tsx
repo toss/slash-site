@@ -13,7 +13,7 @@ export const ProjectSection = () => {
     offset: ["start 60%", "end start"],
   });
 
-  const projectTitleScale = useTransform(scrollYProgress, [0, 0.2], [4, 1]);
+  const projectTitleScale = useTransform(scrollYProgress, [0, 0.2], [3, 1]);
 
   return (
     <motion.section className={styles.section} ref={sectionRef}>

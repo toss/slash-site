@@ -85,7 +85,7 @@
   text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .section .title {
     font-size: 2rem;
   }
@@ -106,5 +106,8 @@
 
   .downloadsCountDescription {
     font-size: 12px;
+  }
+  .subText {
+    font-size: 16px;
   }
 }

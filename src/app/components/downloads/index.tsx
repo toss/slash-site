@@ -54,9 +54,9 @@ export const DownloadsSection = () => {
             count={110000}
             description={
               <span>
-                Total
+                Total NPM
                 <br />
-                NPM downloads
+                downloads
               </span>
             }
           />

@@ -131,7 +131,7 @@
   height: 100% !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .mobileBreak {
     display: block;
   }

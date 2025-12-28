@@ -1,0 +1,43 @@
+import { motion, useScroll, useTransform } from "motion/react";
+import styles from "./styles.module.css";
+import { useRouter } from "next/navigation";
+
+export const Navbar = ({
+  scrollMotionEnabled = true,
+}: {
+  scrollMotionEnabled?: boolean;
+}) => {
+  const router = useRouter();
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [470, 800], [0, 1]);
+
+  return (
+    <>
+      <motion.nav
+        className={styles.container}
+        style={{ opacity: scrollMotionEnabled ? opacity : 1 }}
+      >
+        <ul className={styles.list}>
+          <li
+            onClick={() => {
+              router.push("/", { scroll: false });
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }}
+          >
+            Slash
+          </li>
+          <li
+            onClick={() => {
+              router.push("/team");
+            }}
+          >
+            TEAM
+          </li>
+        </ul>
+      </motion.nav>
+    </>
+  );
+};

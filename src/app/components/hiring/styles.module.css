@@ -2,11 +2,18 @@
   min-height: 200vh;
   background: linear-gradient(to bottom, #14203b, #2f5dc5);
   width: 100vw;
-  position: relative;
   overflow: hidden;
   z-index: 101;
+}
+
+.relative {
+  position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+}
+
+.absolute {
+  position: absolute;
 }
 
 .contentWrapper {
@@ -30,7 +37,7 @@
 .subtitle {
   width: 100%;
   color: white;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 36px;
   letter-spacing: 0.05em;
   margin-top: 1rem;
@@ -51,6 +58,25 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 30px;
+}
+
+.card1 {
+  transform: rotate(-5deg) translate(-20%, 0);
+  background-color: #ffffff;
+  color: #000000;
+  z-index: 1;
+}
+.card2 {
+  transform: rotate(5deg) translate(40%, -10%);
+  background-color: #283a60;
+  color: #ffffff;
+  z-index: 2;
+}
+.card3 {
+  transform: rotate(3deg) translate(-20%, -20%);
+  background-color: #e0ecf8;
+  color: #333d4b;
+  z-index: 3;
 }
 
 .cardTitle {
@@ -74,11 +100,16 @@
   font-size: 36px;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
   position: absolute;
   bottom: 50vh;
   left: 50%;
   transform: translateX(-50%);
-  transition: all 0.3s ease;
+}
+
+.hiringButton:hover {
+  background-color: #0a2456;
+  transform: translateX(-50%) scale(1.05);
 }
 
 .copyright {
@@ -92,25 +123,70 @@
   font-weight: 400;
 }
 
-.hiringButton:hover {
-  background-color: #0a2456;
-  transform: translateX(-50%) scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .mobileBreak {
-    display: block;
+@media (max-width: 780px) {
+  .title {
+    font-size: 64px;
+  }
+  .subtitle {
+    font-size: 24px;
+  }
+  .card {
+    width: 400px;
+    height: 200px;
+  }
+  .cardTitle {
+    font-size: 32px;
+  }
+  .cardDescription {
+    font-size: 24px;
   }
 
-  .logoWrapper {
-    width: clamp(100px, 25vw, 150px);
-    max-height: clamp(50px, 12vw, 80px);
+  .card1 {
+    transform: rotate(-5deg) translate(0%, 0);
+  }
+  .card2 {
+    transform: rotate(5deg) translate(0%, 0);
+  }
+  .card3 {
+    transform: rotate(-5deg) translate(0%, 0);
   }
 }
 
 @media (max-width: 480px) {
-  .logoWrapper {
-    width: clamp(80px, 30vw, 120px);
-    max-height: clamp(40px, 15vw, 60px);
+  .title {
+    font-size: 52px;
+  }
+  .subtitle {
+    font-size: 24px;
+  }
+  .card {
+    width: 300px;
+    height: 150px;
+  }
+  .cardTitle {
+    font-size: 24px;
+  }
+
+  .cardDescription {
+    font-size: 16px;
+  }
+  .card1 {
+    transform: rotate(-5deg) translate(0%, 0);
+  }
+  .card2 {
+    transform: rotate(5deg) translate(0%, -5%);
+  }
+  .card3 {
+    transform: rotate(-5deg) translate(0%, -10%);
+  }
+
+  .hiringButton {
+    width: 250px;
+    height: 75px;
+    font-size: 24px;
+  }
+
+  .copyright {
+    font-size: 14px;
   }
 }

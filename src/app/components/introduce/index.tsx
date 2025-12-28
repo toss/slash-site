@@ -27,9 +27,6 @@ export const IntroduceSection = () => {
     offset: ["start start", "end start"],
   });
 
-  const teamScale = useTransform(scrollYProgress, [0, 0.02], [1, 0.2]);
-  const teamOpacity = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
-
   const startImageOpacity = useTransform(scrollYProgress, [0, 0.02], [1, 0]);
   const endImageOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
 
@@ -137,19 +134,6 @@ export const IntroduceSection = () => {
         style={{ opacity: endImageOpacity }}
       />
       <Logo animationState={animationState} />
-      <motion.span
-        className={styles.title}
-        style={{
-          scale: teamScale,
-          position: "fixed",
-          top: "20px",
-          right: "20px",
-          opacity: teamOpacity,
-          transformOrigin: "right top",
-        }}
-      >
-        TEAM
-      </motion.span>
       <motion.div className={styles.contentWrapper}>
         <motion.p
           className={styles.subtitle}

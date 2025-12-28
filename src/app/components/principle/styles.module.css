@@ -52,7 +52,23 @@
   line-height: 1.3;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
+  .title {
+    font-size: 64px;
+  }
+  .card {
+    width: 400px;
+    height: 300px;
+  }
+  .cardTitle {
+    font-size: 32px;
+  }
+  .cardDescription {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
   .title {
     font-size: 42px;
   }

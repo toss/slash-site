@@ -1,0 +1,77 @@
+.section {
+  position: relative;
+  padding: 2rem;
+  background-color: #14203b;
+}
+
+.title {
+  color: white;
+  font-size: 60px;
+  font-weight: "bold";
+  text-align: center;
+}
+
+.membersContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 100px;
+}
+
+@media (max-width: 480px) {
+  .membersContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .membersContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: #ffffff;
+  padding: 24px;
+  height: 260px;
+}
+
+.memberImage {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 12px;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.memberName {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.memberPosition,
+.memberGithub {
+  font-size: 15px;
+  font-weight: 400;
+  color: #6b7684;
+}
+
+.memberGithub {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

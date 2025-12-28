@@ -1,0 +1,25 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 86px;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  color: white;
+  font-size: 30px;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 24px;
+  height: 100%;
+}
+
+.list li {
+  cursor: pointer;
+}
