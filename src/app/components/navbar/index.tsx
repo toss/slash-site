@@ -12,7 +12,11 @@ export const Navbar = ({
 }) => {
   const router = useRouter();
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [NAVBAR_SCROLL_THRESHOLD, NAVBAR_FADE_END], [0, 1]);
+  const opacity = useTransform(
+    scrollY,
+    [NAVBAR_SCROLL_THRESHOLD, NAVBAR_FADE_END],
+    [0, 1]
+  );
 
   return (
     <>
@@ -30,10 +34,22 @@ export const Navbar = ({
               });
             }}
           >
-            Slash
+            S
+            <span
+              style={{
+                display: "inline-block",
+                transform: "skewX(-15deg)",
+              }}
+            >
+              l
+            </span>
+            ash
           </li>
           <li
             onClick={() => {
+              window.scrollTo({
+                top: 0,
+              });
               router.push("/team");
             }}
           >

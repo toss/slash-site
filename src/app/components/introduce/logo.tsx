@@ -10,52 +10,17 @@ export const Logo = ({
   return (
     <>
       <motion.span className={styles.title}>
-        <div className={styles.logoLetter}>
-          <Image
-            src="/slash-logo/logo-big-s.png"
-            alt=""
-            fill
-            style={{ objectFit: 'contain' }}
-          />
-        </div>
-        <motion.div
+        <span className={styles.logoLetter}>S</span>
+        <motion.span
           className={styles.logoLetter}
           animate={{
-            skewX: animationState === "visible" ? -8 : 0,
+            skewX: animationState === "visible" ? -15 : 0,
           }}
           transition={{ duration: 0.5 }}
         >
-          <Image 
-            src="/slash-logo/logo-l.png" 
-            alt="" 
-            fill
-            style={{ objectFit: 'contain' }}
-          />
-        </motion.div>
-        <div className={styles.logoLetter}>
-          <Image 
-            src="/slash-logo/logo-a.png" 
-            alt="" 
-            fill
-            style={{ objectFit: 'contain' }}
-          />
-        </div>
-        <div className={styles.logoLetter}>
-          <Image 
-            src="/slash-logo/logo-s.png" 
-            alt="" 
-            fill
-            style={{ objectFit: 'contain' }}
-          />
-        </div>
-        <div className={styles.logoLetter}>
-          <Image 
-            src="/slash-logo/logo-h.png" 
-            alt="" 
-            fill
-            style={{ objectFit: 'contain' }}
-          />
-        </div>
+          l
+        </motion.span>
+        <div className={styles.logoLetter}>ash</div>
       </motion.span>
     </>
   );

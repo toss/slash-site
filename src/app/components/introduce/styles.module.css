@@ -40,7 +40,6 @@
   position: fixed;
   display: flex;
   align-items: baseline;
-  gap: 13px;
   left: 50%;
   top: 45%;
   transform: translate(-50%, -50%);
@@ -48,32 +47,8 @@
 
 .logoLetter {
   position: relative;
-}
-
-/* S */
-.logoLetter:nth-child(1) {
-  width: clamp(60px, 9vw, 121px);
-  height: clamp(80px, 12vw, 165px);
-}
-/* l */
-.logoLetter:nth-child(2) {
-  width: clamp(10px, 1.5vw, 18px);
-  height: clamp(80px, 12vw, 165px);
-}
-/* a */
-.logoLetter:nth-child(3) {
-  width: clamp(58px, 8.5vw, 117px);
-  height: clamp(60px, 9vw, 119px);
-}
-/* s */
-.logoLetter:nth-child(4) {
-  width: clamp(49px, 7vw, 99px);
-  height: clamp(60px, 9vw, 119px);
-}
-/* h */
-.logoLetter:nth-child(5) {
-  width: clamp(51px, 7.5vw, 103px);
-  height: clamp(80px, 12vw, 165px);
+  font-size: 200px;
+  color: #ffffff;
 }
 
 .subtitle {
@@ -139,6 +114,10 @@
   .logoWrapper {
     width: clamp(100px, 25vw, 150px);
     max-height: clamp(50px, 12vw, 80px);
+  }
+
+  .logoLetter {
+    font-size: 120px;
   }
 }
 
