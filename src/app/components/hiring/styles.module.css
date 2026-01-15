@@ -105,6 +105,10 @@
   bottom: 50vh;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .hiringButton:hover {

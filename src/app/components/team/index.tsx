@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./styles.module.css";
 
 export const TeamSection = () => {
@@ -8,7 +9,7 @@ export const TeamSection = () => {
         {MEMBERS.map((member) => (
           <div className={styles.member} key={member.name}>
             <div className={styles.memberImage}>
-              <img src={member.imageUrl} alt={member.name} />
+              <Image src={member.imageUrl} alt={member.name} width={100} height={100} />
             </div>
             <div className={styles.memberName}>{member.name}</div>
             <div className={styles.memberPosition}>{member.position}</div>
@@ -25,7 +26,7 @@ export const TeamSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="/github.png" alt="github link" />
+                <Image src="/github.png" alt="github link" width={16} height={16} />
               </a>
             </div>
           </div>

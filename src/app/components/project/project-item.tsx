@@ -7,14 +7,12 @@ import { githubStats } from "../../../data/github-stats";
 export const ProjectItem = ({
   name,
   description,
-  url,
   logoUrl,
   websiteUrl,
   githubUrl,
 }: {
   name: string;
   description: string;
-  url: string;
   logoUrl: string;
   websiteUrl: string;
   githubUrl: string;

@@ -9,7 +9,7 @@ export const HiringSection = ({
   return (
     <section className={clsx(styles.section, styles[variant])}>
       <div className={styles.contentWrapper}>
-        <span className={styles.title}> We're Hiring! </span>
+        <span className={styles.title}> We&apos;re Hiring! </span>
         <span className={styles.subtitle}>If you want to</span>
       </div>
 
@@ -36,7 +36,14 @@ export const HiringSection = ({
         </div>
       </div>
 
-      <button className={styles.hiringButton}>Join Toss Team</button>
+      <a
+        href="https://toss.im/career/job-detail?job_id=4664498003"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.hiringButton}
+      >
+        Join Toss Team
+      </a>
       <span className={styles.copyright}>
         Copyright © 2025 Viva Republica · Toss Frontend Chapter
       </span>

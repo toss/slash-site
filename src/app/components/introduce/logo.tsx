@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import styles from "./styles.module.css";
-import Image from "next/image";
 
 export const Logo = ({
   animationState,
