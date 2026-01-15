@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Slash",
   description: "PRODUCTIVITY THAT READS AS UX",
+  icons: {
+    // TODO: 파비콘 바꾸어야 함
+    icon: "/slash-logo/logo-s.png",
+  },
 };
 
 export default function RootLayout({
