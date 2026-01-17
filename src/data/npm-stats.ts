@@ -1,11 +1,11 @@
 export const npmStats = {
-  "totalDownloads": 162537591,
-  "totalStars": 15093,
-  "totalDependents": 0,
+  "totalDownloads": 181847830,
+  "totalStars": 15198,
+  "totalDependents": 1161,
   "monthlyData": [
     {
       "month": "Jul '24",
-      "downloads": 163773,
+      "downloads": 101688,
       "fullDate": "2024-07"
     },
     {
@@ -95,46 +95,46 @@ export const npmStats = {
     },
     {
       "month": "Jan '26",
-      "downloads": 0,
+      "downloads": 19372324,
       "fullDate": "2026-01"
     }
   ],
   "packages": [
     {
       "name": "es-toolkit",
-      "downloads": 159618445
+      "downloads": 178790494
     },
     {
       "name": "es-git",
-      "downloads": 195708
+      "downloads": 219277
     },
     {
       "name": "es-hangul",
-      "downloads": 853995
+      "downloads": 893543
     },
     {
       "name": "overlay-kit",
-      "downloads": 531328
+      "downloads": 567621
     },
     {
       "name": "react-simplikit",
-      "downloads": 95076
+      "downloads": 104383
     },
     {
       "name": "use-funnel",
-      "downloads": 2322
+      "downloads": 2334
     },
     {
       "name": "@suspensive/react",
-      "downloads": 881404
+      "downloads": 907926
     },
     {
       "name": "@suspensive/react-query",
-      "downloads": 331410
+      "downloads": 333782
     },
     {
       "name": "@suspensive/jotai",
-      "downloads": 27903
+      "downloads": 28470
     },
     {
       "name": "@suspensive/zustand",
@@ -143,7 +143,7 @@ export const npmStats = {
   ],
   "period": {
     "start": "2020-01-01",
-    "end": "2026-01-01"
+    "end": "2026-01-17"
   },
-  "lastUpdated": "2026-01-01T09:14:04.968Z"
+  "lastUpdated": "2026-01-17T16:17:54.010Z"
 };

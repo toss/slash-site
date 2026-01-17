@@ -78,26 +78,27 @@ async function getGitHubStats(repo) {
   }
 }
 
-async function getDependentsCount(repo) {
+async function getDependentsCount(packageName) {
+  const apiKey = process.env.LIBRARIES_IO_API_KEY;
+  if (!apiKey) {
+    console.log(`Skipping dependents for ${packageName}: No LIBRARIES_IO_API_KEY`);
+    return 0;
+  }
+
   try {
     const response = await fetch(
-      `https://github.com/${repo}/network/dependents`,
-      {
-        headers: { Accept: "text/html" },
-      }
+      `https://libraries.io/api/npm/${encodeURIComponent(packageName)}?api_key=${apiKey}`
     );
 
-    if (!response.ok) return 0;
-
-    const html = await response.text();
-    const match = html.match(/(\\d{1,3}(?:,\\d{3})*)\\s+dependents/);
-    if (match) {
-      return parseInt(match[1].replace(/,/g, "")) || 0;
+    if (!response.ok) {
+      console.log(`${packageName}: Libraries.io API returned ${response.status}`);
+      return 0;
     }
 
-    return 0;
+    const data = await response.json();
+    return data.dependents_count || 0;
   } catch (error) {
-    console.error(`Dependents for ${repo}: ${error.message}`);
+    console.error(`Dependents for ${packageName}: ${error.message}`);
     return 0;
   }
 }
@@ -152,30 +153,35 @@ async function fetchAllNpmStats() {
 
   console.log("\\n⭐ Fetching GitHub statistics...");
 
-  // GitHub 통계 병렬 처리 (중복 제거)
+  // GitHub 통계 (중복 제거)
   const uniqueRepos = Array.from(new Set(Object.values(GITHUB_REPOS)));
   const githubResults = [];
 
   for (const repo of uniqueRepos) {
     try {
-      const [stats, dependents] = await Promise.all([
-        getGitHubStats(repo),
-        getDependentsCount(repo),
-      ]);
-      githubResults.push({ repo, stats, dependents });
-      console.log(
-        `✌🏻 ${repo}: ${stats.stargazers_count} stars, ${dependents} dependents`
-      );
+      const stats = await getGitHubStats(repo);
+      githubResults.push({ repo, stats });
+      console.log(`✓ ${repo}: ${stats.stargazers_count} stars`);
     } catch (error) {
       console.error(`✗ ${repo}: ${error.message}`);
       githubResults.push({
         repo,
         stats: { stargazers_count: 0, forks_count: 0 },
-        dependents: 0,
       });
     }
+    await new Promise((resolve) => setTimeout(resolve, 200));
+  }
 
-    // Rate limit 방지
+  console.log("\\n📦 Fetching dependents from Libraries.io...");
+
+  // Dependents (패키지별)
+  let totalDependents = 0;
+  for (const pkg of PACKAGES) {
+    const dependents = await getDependentsCount(pkg);
+    totalDependents += dependents;
+    if (dependents > 0) {
+      console.log(`✓ ${pkg}: ${dependents} dependents`);
+    }
     await new Promise((resolve) => setTimeout(resolve, 200));
   }
 
@@ -185,10 +191,6 @@ async function fetchAllNpmStats() {
   );
   const totalStars = githubResults.reduce(
     (sum, result) => sum + result.stats.stargazers_count,
-    0
-  );
-  const totalDependents = githubResults.reduce(
-    (sum, result) => sum + result.dependents,
     0
   );
   const monthlyChartData = aggregateByMonth(downloadResults);
