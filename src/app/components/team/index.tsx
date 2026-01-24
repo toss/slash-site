@@ -1,5 +1,18 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import styles from "./styles.module.css";
+import githubIcon from "@/assets/github.png";
+
+import sojinPark from "@/assets/images/people/sojin-park.jpeg";
+import dongwookMoon from "@/assets/images/people/dongwook-moon.jpeg";
+import jonghyeonKo from "@/assets/images/people/jonghyeon-ko.jpeg";
+import sanghyeonSong from "@/assets/images/people/song-sang-hyun.jpeg";
+import chanhyuckPark from "@/assets/images/people/okinawaa.png";
+import yunhoKim from "@/assets/images/people/kim-you-know.jpeg";
+import yongbeenIm from "@/assets/images/people/yongbeen-im.jpeg";
+import sukyeongPark from "@/assets/images/people/sukyung-park.jpeg";
+import dayongLee from "@/assets/images/people/dayong-lee.jpeg";
+import juhyeokKang from "@/assets/images/people/juhyeok-kang.jpg";
+import seonjinKim from "@/assets/images/people/seonjin-kim.jpg";
 
 export const TeamSection = () => {
   return (
@@ -9,7 +22,12 @@ export const TeamSection = () => {
         {MEMBERS.map((member) => (
           <div className={styles.member} key={member.name}>
             <div className={styles.memberImage}>
-              <Image src={member.imageUrl} alt={member.name} width={100} height={100} />
+              <Image
+                src={member.imageUrl}
+                alt={member.name}
+                width={100}
+                height={100}
+              />
             </div>
             <div className={styles.memberName}>{member.name}</div>
             <div className={styles.memberPosition}>{member.position}</div>
@@ -26,7 +44,12 @@ export const TeamSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image src="/github.png" alt="github link" width={16} height={16} />
+                <Image
+                  src={githubIcon}
+                  alt="github link"
+                  width={16}
+                  height={16}
+                />
               </a>
             </div>
           </div>
@@ -39,66 +62,87 @@ export const TeamSection = () => {
 type MemberInfo = {
   name: string;
   position: string;
-  imageUrl: string;
+  imageUrl: StaticImageData | string;
   githubId: string;
   githubUrl: string;
 };
 
 const MEMBERS: MemberInfo[] = [
   {
-    name: "DongWook Moon",
-    position: "Toss Team",
-    imageUrl: "https://avatars.githubusercontent.com/u/19145342?v=4",
-    githubId: "evan-moon",
-    githubUrl: "https://github.com/evan-moon",
-  },
-  {
     name: "Sojin Park",
     position: "Toss Team",
-    imageUrl: "https://avatars.githubusercontent.com/u/3102175?v=4",
+    imageUrl: sojinPark,
     githubId: "raon0211",
     githubUrl: "https://github.com/raon0211",
   },
   {
+    name: "Dongwook Moon",
+    position: "Toss Team",
+    imageUrl: dongwookMoon,
+    githubId: "evan-moon",
+    githubUrl: "https://github.com/evan-moon",
+  },
+  {
     name: "Jonghyeon Ko",
     position: "Toss Team",
-    imageUrl: "https://avatars.githubusercontent.com/u/61593290?v=4",
+    imageUrl: jonghyeonKo,
     githubId: "manudeli",
     githubUrl: "https://github.com/manudeli",
   },
   {
     name: "Sanghyeon Song",
     position: "Toss Team",
-    imageUrl: "https://avatars.githubusercontent.com/u/45632773?v=4",
+    imageUrl: sanghyeonSong,
     githubId: "moraeso",
     githubUrl: "https://github.com/moraeso",
   },
   {
     name: "Chanhyuck Park",
     position: "Toss Team",
-    imageUrl: "https://avatars.githubusercontent.com/u/69495129?v=4",
+    imageUrl: chanhyuckPark,
     githubId: "okinawaa",
     githubUrl: "https://github.com/okinawaa",
   },
   {
     name: "Yunho Kim",
     position: "Toss Team",
-    imageUrl: "https://avatars.githubusercontent.com/u/71386219?v=4",
+    imageUrl: yunhoKim,
     githubId: "kimyouknow",
     githubUrl: "https://github.com/kimyouknow",
   },
   {
     name: "Yongbeen Im",
     position: "Toss Team",
-    imageUrl: "https://avatars.githubusercontent.com/u/26024412?v=4",
+    imageUrl: yongbeenIm,
     githubId: "jungpaeng",
     githubUrl: "https://github.com/jungpaeng",
   },
   {
     name: "Sukyeong Park",
     position: "Toss Team",
-    imageUrl: "https://avatars.githubusercontent.com/u/81177665?v=4",
+    imageUrl: sukyeongPark,
     githubId: "zztnrudzz13",
     githubUrl: "https://github.com/zztnrudzz13",
+  },
+  {
+    name: "Dayong Lee",
+    position: "Toss Team",
+    imageUrl: dayongLee,
+    githubId: "dayongkr",
+    githubUrl: "https://github.com/dayongkr",
+  },
+  {
+    name: "Juhyeok Kang",
+    position: "Toss Team",
+    imageUrl: juhyeokKang,
+    githubId: "kangju2000",
+    githubUrl: "https://github.com/kangju2000",
+  },
+  {
+    name: "Seonjin Kim",
+    position: "Toss Team",
+    imageUrl: seonjinKim,
+    githubId: "Junnis0123",
+    githubUrl: "https://github.com/Junnis0123",
   },
 ];
