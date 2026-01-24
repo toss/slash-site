@@ -11,6 +11,9 @@ import { useRef, useState, useCallback } from "react";
 import { Logo } from "./logo";
 import Image from "next/image";
 
+import startBackground from "@/assets/start-background.png";
+import endBackground from "@/assets/end-background.png";
+
 export const IntroduceSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -31,7 +34,7 @@ export const IntroduceSection = () => {
   const endImageOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
 
   const VIDEO_THROTTLE_MS = 16; // 60fps
-  
+
   const updateVideo = useCallback(() => {
     const now = Date.now();
     if (now - lastUpdateTime.current < VIDEO_THROTTLE_MS) return;
@@ -119,18 +122,18 @@ export const IntroduceSection = () => {
       <video
         ref={videoRef}
         className={styles.backgroundVideo}
-        src="./background-small.mp4"
+        src="/background-small.mp4"
         muted
         playsInline
       />
       <motion.img
-        src="./start-background.png"
+        src={startBackground.src}
         alt="Start background"
         className={styles.startImage}
         style={{ opacity: startImageOpacity }}
       />
       <motion.img
-        src="./end-background.png"
+        src={endBackground.src}
         alt="End background"
         className={styles.endImage}
         style={{ opacity: endImageOpacity }}
@@ -197,18 +200,18 @@ export const IntroduceSection = () => {
 const ADOPTERS = [
   {
     name: "yarn",
-    src: "./other-logos/yarn.svg",
+    src: "/other-logos/yarn.svg",
   },
   {
     name: "microsoft",
-    src: "./other-logos/microsoft.svg",
+    src: "/other-logos/microsoft.svg",
   },
   {
     name: "storybook",
-    src: "./other-logos/storybook.svg",
+    src: "/other-logos/storybook.svg",
   },
   {
     name: "jest-dom",
-    src: "./other-logos/jest-dom.svg",
+    src: "/other-logos/jest-dom.svg",
   },
 ];

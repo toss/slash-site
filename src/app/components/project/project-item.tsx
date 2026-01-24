@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import { LinkIcon } from "../ui/link-icon";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { formatNumberWithUnit } from "../../utils/formatNumber";
 import { githubStats } from "../../../data/github-stats";
 
@@ -13,7 +13,7 @@ export const ProjectItem = ({
 }: {
   name: string;
   description: string;
-  logoUrl: string;
+  logoUrl: StaticImageData;
   websiteUrl: string;
   githubUrl: string;
 }) => {
