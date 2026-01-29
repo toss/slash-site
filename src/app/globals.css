@@ -10,7 +10,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   overscroll-behavior: none;
 }
 
