@@ -8,7 +8,7 @@ import { HiringSection } from "../components/hiring";
 export default function TeamPage() {
   return (
     <div className={styles.container}>
-      <Navbar scrollMotionEnabled={false} />
+      <Navbar />
       <TeamSection />
       <HiringSection variant="absolute" />
     </div>
