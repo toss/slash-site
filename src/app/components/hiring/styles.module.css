@@ -8,8 +8,6 @@
 
 .relative {
   position: relative;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .absolute {
