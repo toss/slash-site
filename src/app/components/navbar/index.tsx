@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import styles from "./styles.module.css";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const NAVBAR_SCROLL_THRESHOLD = 470;
 const NAVBAR_FADE_END = 800;
@@ -10,7 +10,6 @@ export const Navbar = ({
 }: {
   scrollMotionEnabled?: boolean;
 }) => {
-  const router = useRouter();
   const { scrollY } = useScroll();
   const opacity = useTransform(
     scrollY,
@@ -25,35 +24,22 @@ export const Navbar = ({
         style={{ opacity: scrollMotionEnabled ? opacity : 1 }}
       >
         <ul className={styles.list}>
-          <li
-            onClick={() => {
-              router.push("/", { scroll: false });
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              });
-            }}
-          >
-            S
-            <span
-              style={{
-                display: "inline-block",
-                transform: "skewX(-15deg)",
-              }}
-            >
-              l
-            </span>
-            ash
+          <li>
+            <Link href="/">
+              S
+              <span
+                style={{
+                  display: "inline-block",
+                  transform: "skewX(-15deg)",
+                }}
+              >
+                l
+              </span>
+              ash
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              window.scrollTo({
-                top: 0,
-              });
-              router.push("/team");
-            }}
-          >
-            TEAM
+          <li>
+            <Link href="/team">TEAM</Link>
           </li>
         </ul>
       </motion.nav>
