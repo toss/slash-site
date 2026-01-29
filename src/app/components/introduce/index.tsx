@@ -6,7 +6,7 @@ import {
 } from "motion/react";
 
 import styles from "./styles.module.css";
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 
 import { Logo } from "./logo";
 import Image from "next/image";
@@ -33,7 +33,7 @@ export const IntroduceSection = () => {
   const startImageOpacity = useTransform(scrollYProgress, [0, 0.02], [1, 0]);
   const endImageOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
 
-  const VIDEO_THROTTLE_MS = 16; // 60fps
+  const VIDEO_THROTTLE_MS = 16;
 
   const updateVideo = useCallback(() => {
     const now = Date.now();
@@ -73,6 +73,24 @@ export const IntroduceSection = () => {
   }, []);
 
   useMotionValueEvent(scrollY, "change", updateVideo);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const initVideo = () => {
+        video.play().then(() => {
+          video.pause();
+          video.currentTime = 0;
+        }).catch(() => {});
+      };
+
+      if (video.readyState >= 1) {
+        initVideo();
+      } else {
+        video.addEventListener("loadedmetadata", initVideo, { once: true });
+      }
+    }
+  }, []);
 
   const containerVariants = {
     hidden: {
@@ -123,8 +141,10 @@ export const IntroduceSection = () => {
         ref={videoRef}
         className={styles.backgroundVideo}
         src="/background-small.mp4"
+        poster={startBackground.src}
         muted
         playsInline
+        preload="auto"
       />
       <motion.img
         src={startBackground.src}

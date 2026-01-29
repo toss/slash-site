@@ -23,3 +23,8 @@
 .list li {
   cursor: pointer;
 }
+
+.list li a {
+  color: inherit;
+  text-decoration: none;
+}
