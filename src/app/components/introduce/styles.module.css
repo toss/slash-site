@@ -13,6 +13,7 @@
   height: 100vh;
   object-fit: cover;
   z-index: -1;
+  pointer-events: none;
 }
 
 .startImage,
@@ -42,6 +43,7 @@
   left: 50%;
   top: 45%;
   transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .logoLetter {
