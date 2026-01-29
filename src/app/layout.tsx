@@ -17,6 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://static.toss.im" crossOrigin="anonymous" />
+        <link rel="preload" href="https://static.toss.im/tps/main.css" as="style" />
+        <link rel="preload" href="https://static.toss.im/tps/others.css" as="style" />
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>

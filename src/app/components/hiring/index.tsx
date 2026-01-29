@@ -1,15 +1,15 @@
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-export const HiringSection = ({ 
-  variant = "relative" 
-}: { 
-  variant?: "relative" | "absolute" 
+export const HiringSection = ({
+  variant = "relative"
+}: {
+  variant?: "relative" | "absolute"
 }) => {
   return (
     <section className={clsx(styles.section, styles[variant])}>
       <div className={styles.contentWrapper}>
-        <span className={styles.title}> We&apos;re Hiring! </span>
+        <span className={styles.title}>We&apos;re Hiring!</span>
         <span className={styles.subtitle}>If you want to</span>
       </div>
 

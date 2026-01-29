@@ -13,6 +13,8 @@ import sukyeongPark from "@/assets/images/people/sukyung-park.jpeg";
 import dayongLee from "@/assets/images/people/dayong-lee.jpeg";
 import juhyeokKang from "@/assets/images/people/juhyeok-kang.jpg";
 import seonjinKim from "@/assets/images/people/seonjin-kim.jpg";
+import seokjuNa from "@/assets/images/people/seokju-na.jpeg";
+import myounghoPark from "@/assets/images/people/myoungho-park.jpeg";
 
 export const TeamSection = () => {
   return (
@@ -144,5 +146,19 @@ const MEMBERS: MemberInfo[] = [
     imageUrl: seonjinKim,
     githubId: "Junnis0123",
     githubUrl: "https://github.com/Junnis0123",
+  },
+  {
+    name: "Seokju Na",
+    position: "Toss Team",
+    imageUrl: seokjuNa,
+    githubId: "seokju-na",
+    githubUrl: "https://github.com/seokju-na",
+  },
+  {
+    name: "Myoungho Park",
+    position: "Toss Team",
+    imageUrl: myounghoPark,
+    githubId: "qkraudghgh",
+    githubUrl: "https://github.com/qkraudghgh",
   },
 ];

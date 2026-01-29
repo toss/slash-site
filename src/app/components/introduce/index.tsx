@@ -17,7 +17,6 @@ import endBackground from "@/assets/end-background.png";
 export const IntroduceSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const lastUpdateTime = useRef<number>(0);
 
   const [animationState, setAnimationState] = useState<"hidden" | "visible">(
     "hidden"
@@ -30,64 +29,42 @@ export const IntroduceSection = () => {
     offset: ["start start", "end start"],
   });
 
-  const startImageOpacity = useTransform(scrollYProgress, [0, 0.02], [1, 0]);
+  const startImageOpacity = useTransform(scrollYProgress, [0, 0.02], [0, 0]);
   const endImageOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
 
-  const VIDEO_THROTTLE_MS = 16;
-
-  const updateVideo = useCallback(() => {
-    const now = Date.now();
-    if (now - lastUpdateTime.current < VIDEO_THROTTLE_MS) return;
-    lastUpdateTime.current = now;
-
-    if (videoRef.current && sectionRef.current) {
-      const video = videoRef.current;
+  const updateAnimationState = useCallback(() => {
+    if (sectionRef.current) {
       const section = sectionRef.current;
-      const duration = video.duration;
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight;
+      const windowHeight = window.innerHeight;
 
-      if (duration && duration > 0 && video.readyState >= 3) {
-        const rect = section.getBoundingClientRect();
-        const sectionHeight = section.offsetHeight;
-        const windowHeight = window.innerHeight;
+      const scrolled = -rect.top;
+      const totalScrollDistance = sectionHeight - windowHeight;
+      const progress = Math.max(0, Math.min(1, scrolled / totalScrollDistance));
 
-        const scrolled = -rect.top;
-        const totalScrollDistance = sectionHeight - windowHeight;
-        const progress = Math.max(
-          0,
-          Math.min(1, scrolled / totalScrollDistance)
-        );
-
-        requestAnimationFrame(() => {
-          if (video.currentTime !== undefined) {
-            video.currentTime = progress * duration;
-          }
-        });
-
-        if (progress >= 0.4) {
-          setAnimationState("visible");
-        } else {
-          setAnimationState("hidden");
-        }
+      if (progress >= 0.4) {
+        setAnimationState("visible");
+      } else {
+        setAnimationState("hidden");
       }
     }
   }, []);
 
-  useMotionValueEvent(scrollY, "change", updateVideo);
+  useMotionValueEvent(scrollY, "change", updateAnimationState);
 
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-      const initVideo = () => {
-        video.play().then(() => {
-          video.pause();
-          video.currentTime = 0;
-        }).catch(() => {});
+      video.playbackRate = 2;
+      const playVideo = () => {
+        video.play().catch(() => {});
       };
 
       if (video.readyState >= 1) {
-        initVideo();
+        playVideo();
       } else {
-        video.addEventListener("loadedmetadata", initVideo, { once: true });
+        video.addEventListener("loadedmetadata", playVideo, { once: true });
       }
     }
   }, []);
@@ -141,10 +118,10 @@ export const IntroduceSection = () => {
         ref={videoRef}
         className={styles.backgroundVideo}
         src="/background-small.mp4"
-        poster={startBackground.src}
         muted
         playsInline
         preload="auto"
+        autoPlay
       />
       <motion.img
         src={startBackground.src}
