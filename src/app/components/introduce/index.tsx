@@ -170,6 +170,7 @@ export const IntroduceSection = () => {
             bottom: "52px",
             transformStyle: "preserve-3d",
             backfaceVisibility: "hidden",
+            pointerEvents: "none",
           }}
         >
           PRODUCTIVITY
@@ -189,6 +190,7 @@ export const IntroduceSection = () => {
           bottom: "52px",
           transformStyle: "preserve-3d",
           perspective: "1000px",
+          pointerEvents: "none",
         }}
       >
         <motion.div className={styles.logoGrid}>
