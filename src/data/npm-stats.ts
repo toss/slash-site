@@ -1,16 +1,11 @@
 export const npmStats = {
-  "totalDownloads": 181847830,
-  "totalStars": 15198,
-  "totalDependents": 1161,
+  "totalDownloads": 229297117,
+  "totalStars": 15349,
+  "totalDependents": 1245,
   "monthlyData": [
     {
-      "month": "Jul '24",
-      "downloads": 101688,
-      "fullDate": "2024-07"
-    },
-    {
       "month": "Aug '24",
-      "downloads": 201778,
+      "downloads": 93059,
       "fullDate": "2024-08"
     },
     {
@@ -95,46 +90,51 @@ export const npmStats = {
     },
     {
       "month": "Jan '26",
-      "downloads": 19372324,
+      "downloads": 40113767,
       "fullDate": "2026-01"
+    },
+    {
+      "month": "Feb '26",
+      "downloads": 26918251,
+      "fullDate": "2026-02"
     }
   ],
   "packages": [
     {
       "name": "es-toolkit",
-      "downloads": 178790494
+      "downloads": 225932299
     },
     {
       "name": "es-git",
-      "downloads": 219277
+      "downloads": 276561
     },
     {
       "name": "es-hangul",
-      "downloads": 893543
+      "downloads": 976210
     },
     {
       "name": "overlay-kit",
-      "downloads": 567621
+      "downloads": 631467
     },
     {
       "name": "react-simplikit",
-      "downloads": 104383
+      "downloads": 126782
     },
     {
       "name": "use-funnel",
-      "downloads": 2334
+      "downloads": 2473
     },
     {
       "name": "@suspensive/react",
-      "downloads": 907926
+      "downloads": 975365
     },
     {
       "name": "@suspensive/react-query",
-      "downloads": 333782
+      "downloads": 347543
     },
     {
       "name": "@suspensive/jotai",
-      "downloads": 28470
+      "downloads": 28417
     },
     {
       "name": "@suspensive/zustand",
@@ -143,7 +143,7 @@ export const npmStats = {
   ],
   "period": {
     "start": "2020-01-01",
-    "end": "2026-01-17"
+    "end": "2026-02-18"
   },
-  "lastUpdated": "2026-01-17T16:17:54.010Z"
+  "lastUpdated": "2026-02-18T13:45:43.241Z"
 };

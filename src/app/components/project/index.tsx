@@ -1,9 +1,8 @@
-import { motion, useScroll, useTransform } from "motion/react";
+"use client";
 
 import styles from "./styles.module.css";
 import { ProjectItem } from "./project-item";
-import { Separator } from "../ui/separator";
-import { Fragment, useRef } from "react";
+import { StaticImageData } from "next/image";
 
 import esToolkitLogo from "@/assets/package-logos/es-toolkit.png";
 import esGitLogo from "@/assets/package-logos/es-git.png";
@@ -14,38 +13,28 @@ import useFunnelLogo from "@/assets/package-logos/use-funnel.png";
 import suspensiveLogo from "@/assets/package-logos/suspensive.png";
 
 export const ProjectSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 60%", "end start"],
-  });
-
-  const projectTitleScale = useTransform(scrollYProgress, [0, 0.2], [3, 1]);
-
   return (
-    <motion.section className={styles.section} ref={sectionRef}>
-      <motion.div className={styles.contentWrapper}>
-        <motion.div
-          className={styles.title}
-          style={{ scale: projectTitleScale }}
-        >
-          PROJECTS
-        </motion.div>
-      </motion.div>
+    <section className={styles.section}>
+      <h2 className={styles.title}>
+        Projects <span className={styles.count}>(7)</span>
+      </h2>
+
       <ul className={styles.projectList}>
-        {PROJECTS.map((project, index) => (
-          <Fragment key={project.name}>
-            <ProjectItem key={project.name} {...project} />
-            {index !== PROJECTS.length - 1 && <Separator />}
-          </Fragment>
+        {PROJECTS.map((project) => (
+          <ProjectItem key={project.name} {...project} />
         ))}
       </ul>
-    </motion.section>
+    </section>
   );
 };
 
-const PROJECTS = [
+const PROJECTS: {
+  name: string;
+  description: string;
+  logoUrl: StaticImageData;
+  websiteUrl: string;
+  githubUrl: string;
+}[] = [
   {
     name: "es toolkit",
     description: "Focused TypeScript utilities for tests & DX.",
@@ -62,19 +51,10 @@ const PROJECTS = [
   },
   {
     name: "es hangul",
-    description:
-      "Minimal utilities for Hangul parsing, particles, and matching.",
+    description: "Utilities for Hangul parsing, particles, and matching.",
     logoUrl: esHangulLogo,
     websiteUrl: "https://es-hangul.slash.page/",
     githubUrl: "https://github.com/toss/es-hangul",
-  },
-  {
-    name: "overlay kit",
-    description:
-      "Declarative overlay primitives for modals, popovers, and dialogs.",
-    logoUrl: overlayKitLogo,
-    websiteUrl: "https://overlay-kit.slash.page/en",
-    githubUrl: "https://github.com/toss/overlay-kit",
   },
   {
     name: "react simplikit",
@@ -91,8 +71,17 @@ const PROJECTS = [
     githubUrl: "https://github.com/toss/use-funnel",
   },
   {
+    name: "overlay kit",
+    description:
+      "Declarative overlay primitives for modals, popovers, and dialogs.",
+    logoUrl: overlayKitLogo,
+    websiteUrl: "https://overlay-kit.slash.page/en",
+    githubUrl: "https://github.com/toss/overlay-kit",
+  },
+  {
     name: "Suspensive",
-    description: "Practical building blocks for React Suspense in production.",
+    description:
+      "Practical building blocks for React Suspense in production.",
     logoUrl: suspensiveLogo,
     websiteUrl: "https://suspensive.org/",
     githubUrl: "https://github.com/toss/suspensive",

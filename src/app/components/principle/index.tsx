@@ -1,22 +1,23 @@
+"use client";
+
 import { motion, MotionValue, useScroll, useTransform } from "motion/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 const SCROLL_CONFIG = {
-  TRIGGER_MULTIPLIER: 0.15,
+  TRIGGER_MULTIPLIER: 0.12,
   END_OFFSET: 0.01,
-  Y_TRANSFORM_BASE: -70,
-  Y_TRANSFORM_INCREMENT: 20,
+  Y_TRANSFORM_BASE: -45,
+  Y_TRANSFORM_INCREMENT: 15,
   X_TRANSFORM: "-60%",
   LEFT_POSITION_BASE: 50,
-  LEFT_POSITION_INCREMENT: 5,
+  LEFT_POSITION_INCREMENT: 4,
 } as const;
 
 interface CardData {
+  id: string;
   title: string;
   description: string;
-  backgroundColor: string;
-  color: string;
 }
 
 interface CardProps {
@@ -27,30 +28,41 @@ interface CardProps {
 
 export const PrincipleSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const [isTitleFixed, setIsTitleFixed] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 50%", "end start"],
+    offset: ["start start", "end start"],
   });
 
-  const fixedPosition = useTransform(scrollYProgress, (value) =>
-    value > 0 ? "fixed" : "absolute"
-  );
+  // 타이틀이 뷰포트 상단에 닿았을 때 fixed로 전환
+  useEffect(() => {
+    const handleScroll = () => {
+      if (titleRef.current) {
+        const rect = titleRef.current.getBoundingClientRect();
+        setIsTitleFixed(rect.top <= 0);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <motion.section className={styles.section} ref={sectionRef}>
-      <motion.div className={styles.sectionContent}>
-        <motion.div
-          className={styles.title}
-          style={{ position: fixedPosition }}
-        >
-          PRINCIPLES
-        </motion.div>
-      </motion.div>
+      <div ref={titleRef} className={styles.titleSentinel} />
+      <div
+        className={styles.titleWrapper}
+        style={{ position: isTitleFixed ? "fixed" : "sticky" }}
+      >
+        <h2 className={styles.title}>
+          Principles <span className={styles.count}>({CARDS.length})</span>
+        </h2>
+      </div>
       <motion.div className={styles.cardsContainer}>
         {CARDS.map((card, index) => (
           <Card
-            key={card.title}
+            key={card.id}
             card={card}
             index={index}
             scrollYProgress={scrollYProgress}
@@ -69,7 +81,7 @@ const Card = ({ card, index, scrollYProgress }: CardProps) => {
   const cardOpacity = useTransform(
     scrollYProgress,
     [triggerPoint, endPoint],
-    [0, 1]
+    [0, 1],
   );
 
   const yTransform = `${
@@ -80,7 +92,7 @@ const Card = ({ card, index, scrollYProgress }: CardProps) => {
     SCROLL_CONFIG.LEFT_POSITION_BASE +
     index * SCROLL_CONFIG.LEFT_POSITION_INCREMENT;
 
-  const zIndex = isHovered ? 100 : 0;
+  const zIndex = isHovered ? 5 : index;
 
   return (
     <motion.div
@@ -91,46 +103,47 @@ const Card = ({ card, index, scrollYProgress }: CardProps) => {
         x: SCROLL_CONFIG.X_TRANSFORM,
         y: yTransform,
         left: `${leftPercentage}%`,
-        backgroundColor: card.backgroundColor,
-        color: card.color,
         opacity: cardOpacity,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <motion.div className={styles.cardTitle}>{card.title}</motion.div>
-      <motion.div className={styles.cardDescription}>
-        {card.description}
-      </motion.div>
+      <div className={styles.cardNumber}>{card.id}</div>
+      <div className={styles.cardBottom}>
+        <div className={styles.cardTitle}>{card.title}</div>
+        <div className={styles.cardDescription}>{card.description}</div>
+      </div>
     </motion.div>
   );
 };
 
-const CARDS = [
+const CARDS: CardData[] = [
   {
+    id: "01",
     title: "Production-first",
     description:
       "Problems come from production, solutions go back to production.",
-    backgroundColor: "#ffffff",
-    color: "#000000",
   },
   {
+    id: "02",
     title: "Make it small",
     description: "Small APIs, minimal dependencies, predictable behavior.",
-    backgroundColor: "#283A60",
-    color: "#ffffff",
   },
   {
+    id: "03",
     title: "Simplicity over scope",
     description:
       "Clarity beats feature breadth; we remove options before adding them.",
-    backgroundColor: "#1D3978",
-    color: "#ffffff",
   },
   {
+    id: "04",
     title: "Performance as a default",
     description: "Fast by design — not as an afterthought.",
-    backgroundColor: "#07349A",
-    color: "#ffffff",
+  },
+  {
+    id: "05",
+    title: "Work in public",
+    description:
+      "Design notes, decisions, and trade-offs are shared whenever possible.",
   },
 ];

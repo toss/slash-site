@@ -3,12 +3,12 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 86px;
-  background: transparent;
-  backdrop-filter: blur(10px);
-  z-index: 1000;
+  height: 64px;
+  background: rgba(2, 2, 2, 0.8);
+  backdrop-filter: blur(12px);
+  z-index: var(--z-navbar);
   color: white;
-  font-size: 30px;
+  font-size: 16px;
 }
 
 .list {
@@ -27,4 +27,11 @@
 .list li a {
   color: inherit;
   text-decoration: none;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  align-items: baseline;
 }

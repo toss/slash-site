@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
-import { LinkIcon } from "../ui/link-icon";
 import Image, { StaticImageData } from "next/image";
 import { formatNumberWithUnit } from "../../utils/formatNumber";
 import { githubStats } from "../../../data/github-stats";
+import { ArrowUpRight } from "lucide-react";
 
 export const ProjectItem = ({
   name,
@@ -17,40 +17,39 @@ export const ProjectItem = ({
   websiteUrl: string;
   githubUrl: string;
 }) => {
-  // as 제거 예정
   const starCount =
     githubStats[name as keyof typeof githubStats]?.stargazers_count || 0;
 
   return (
     <li className={styles.projectItem}>
-      <Image
-        src={logoUrl}
-        alt={name}
-        width={160}
-        height={160}
-        className={styles.projectLogo}
-      />
-      <div className={styles.projectContent}>
-        <h3 className={styles.projectTitle}>{name}</h3>
-        <div className={styles.projectBottom}>
-          <p className={styles.projectDescription}>
-            {description}
-            <br />
-            <span className={styles.projectStar}>
+      <div className={styles.projectInfo}>
+        <div className={styles.logoWrapper}>
+          <Image
+            src={logoUrl}
+            alt={name}
+            width={160}
+            height={160}
+            className={styles.projectLogo}
+          />
+        </div>
+        <div className={styles.projectContent}>
+          <h3 className={styles.projectTitle}>{name}</h3>
+          <p className={styles.projectDescription}>{description}</p>
+          <p className={styles.projectStar}>
+            <span className={styles.starCount}>
               {formatNumberWithUnit(starCount)}
             </span>{" "}
-            Github stars
+            <span className={styles.starLabel}>Github stars</span>
           </p>
-          <div className={styles.projectLinks}>
-            <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
-              Site <LinkIcon />
-            </a>
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-              GitHub
-              <LinkIcon />
-            </a>
-          </div>
         </div>
+      </div>
+      <div className={styles.projectLinks}>
+        <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
+          Site <ArrowUpRight size={12} />
+        </a>
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+          Github <ArrowUpRight size={12} />
+        </a>
       </div>
     </li>
   );
