@@ -1,0 +1,16 @@
+.pixelSlash {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0 0.15em;
+  width: 0.5em;
+  height: 1.0em;
+}
+
+.pixel {
+  position: absolute;
+  background-color: #ffffff;
+  width: 25%;
+  height: 25%;
+}
+

@@ -1,22 +1,14 @@
 import styles from "./styles.module.css";
 import Link from "next/link";
+import { PixelSlash } from "../ui/pixel-slash";
 
 export const Navbar = () => {
   return (
     <nav className={styles.container}>
       <ul className={styles.list}>
         <li>
-          <Link href="/">
-            S
-            <span
-              style={{
-                display: "inline-block",
-                transform: "skewX(-15deg)",
-              }}
-            >
-              l
-            </span>
-            ash
+          <Link href="/" className={styles.logo}>
+            S<PixelSlash />ash
           </Link>
         </li>
         <li>

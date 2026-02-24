@@ -1,30 +1,30 @@
 export const githubStats = {
   "es toolkit": {
-    "stargazers_count": 10612,
-    "updated_at": "2025-12-28T11:23:55.359Z"
+    "stargazers_count": 10780,
+    "updated_at": "2026-02-18T13:45:27.019Z"
   },
   "es git": {
-    "stargazers_count": 308,
-    "updated_at": "2025-12-28T11:23:56.012Z"
+    "stargazers_count": 312,
+    "updated_at": "2026-02-18T13:45:27.629Z"
   },
   "es hangul": {
-    "stargazers_count": 1743,
-    "updated_at": "2025-12-28T11:23:56.605Z"
+    "stargazers_count": 1769,
+    "updated_at": "2026-02-18T13:45:28.200Z"
   },
   "overlay kit": {
-    "stargazers_count": 652,
-    "updated_at": "2025-12-28T11:23:57.140Z"
+    "stargazers_count": 671,
+    "updated_at": "2026-02-18T13:45:28.747Z"
   },
   "react simplikit": {
-    "stargazers_count": 288,
-    "updated_at": "2025-12-28T11:23:57.732Z"
+    "stargazers_count": 295,
+    "updated_at": "2026-02-18T13:45:29.320Z"
   },
   "use funnel": {
-    "stargazers_count": 532,
-    "updated_at": "2025-12-28T11:23:58.344Z"
+    "stargazers_count": 543,
+    "updated_at": "2026-02-18T13:45:29.979Z"
   },
   "Suspensive": {
-    "stargazers_count": 932,
-    "updated_at": "2025-12-28T11:23:58.907Z"
+    "stargazers_count": 979,
+    "updated_at": "2026-02-18T13:45:30.642Z"
   }
 };

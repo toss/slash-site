@@ -1,194 +1,208 @@
 .section {
-  min-height: 200vh;
-  background: linear-gradient(to bottom, #14203b, #2f5dc5);
-  width: 100vw;
-  overflow: hidden;
-  z-index: 101;
-}
-
-.relative {
+  width: 100%;
+  padding: 0 24px 160px;
   position: relative;
+  z-index: var(--z-overlay);
+  background-color: #020202;
 }
 
-.absolute {
-  position: absolute;
-}
-
-.contentWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+.stickyHeader {
+  padding-bottom: 48px;
 }
 
 .title {
-  font-size: 80px;
-  font-weight: 700;
-  background: linear-gradient(to right, #ffffff, #dde6ff, #a7baf0);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-  margin-top: 100px;
+  font-size: 72px;
+  font-weight: 400;
+  margin-bottom: 8px;
 }
 
 .subtitle {
-  width: 100%;
-  color: white;
-  font-weight: 400;
-  font-size: 36px;
-  letter-spacing: 0.05em;
-  margin-top: 1rem;
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 24px;
+  color: #6b7280;
 }
 
-.cardsContainer {
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
+/* === PC: 기존 겹쳐진 카드 === */
+.cardsDesktop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  position: relative;
+  min-height: 300px;
+  align-items: center;
 }
 
 .card {
-  width: 618px;
-  height: 217px;
+  width: 349px;
+  height: 390px;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px;
+  background-color: #000;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.card:hover {
+  transform: rotate(0deg) !important;
+  z-index: var(--z-sticky);
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.card:hover .cardTitle {
+  color: #000000;
+}
+
+.card:hover .cardDescription {
+  color: #333333;
 }
 
 .card1 {
-  transform: rotate(-5deg) translate(-20%, 0);
-  background-color: #ffffff;
-  color: #000000;
-  z-index: 1;
+  transform: rotate(10deg);
 }
+
 .card2 {
-  transform: rotate(5deg) translate(40%, -10%);
-  background-color: #283a60;
-  color: #ffffff;
-  z-index: 2;
+  transform: rotate(-6deg);
+  margin-left: -20px;
 }
+
 .card3 {
-  transform: rotate(3deg) translate(-20%, -20%);
-  background-color: #e0ecf8;
-  color: #333d4b;
-  z-index: 3;
+  transform: rotate(12deg);
+}
+
+/* === Mobile: sticky 스택 카드 === */
+.cardsMobile {
+  display: none;
+}
+
+.stickyCard {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+}
+
+.cardMobile {
+  width: 225px;
+  height: 251.93px;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #0a0a0a;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .cardTitle {
-  font-size: 36px;
-  font-weight: 700;
-  color: inherit;
-}
-.cardDescription {
-  font-size: 28px;
+  font-size: 48px;
   font-weight: 400;
-  color: inherit;
+  color: #e5e7eb;
+}
+
+.cardDescription {
+  font-size: 24px;
+  color: #6b7280;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .hiringButton {
-  width: 357px;
-  height: 105px;
-  background-color: #081d4d;
-  border-radius: 66px;
-  border: none;
-  color: white;
-  font-size: 36px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: absolute;
-  bottom: 50vh;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 16px 48px;
+  border-radius: 9999px;
+  border: 1px solid #374151;
+  font-size: 24px;
+  color: #9ca3af;
+  background: transparent;
+  transition: all 0.2s ease;
+  display: inline-block;
   text-decoration: none;
 }
 
 .hiringButton:hover {
-  background-color: #0a2456;
-  transform: translateX(-50%) scale(1.05);
-}
-
-.copyright {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: 26px;
-  font-weight: 400;
+  border-color: #9ca3af;
+  color: #ffffff;
 }
 
 @media (max-width: 780px) {
   .title {
-    font-size: 64px;
+    font-size: 48px;
   }
+
   .subtitle {
-    font-size: 24px;
+    font-size: 18px;
   }
-  .card {
-    width: 400px;
-    height: 200px;
+
+  .cardsDesktop {
+    display: none;
   }
+
+  .stickyHeader {
+    padding: 0 24px 48px;
+  }
+
+  .cardsMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding-bottom: 40px;
+  }
+
   .cardTitle {
     font-size: 32px;
-  }
-  .cardDescription {
-    font-size: 24px;
-  }
-
-  .card1 {
-    transform: rotate(-5deg) translate(0%, 0);
-  }
-  .card2 {
-    transform: rotate(5deg) translate(0%, 0);
-  }
-  .card3 {
-    transform: rotate(-5deg) translate(0%, 0);
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 52px;
-  }
-  .subtitle {
-    font-size: 24px;
-  }
-  .card {
-    width: 300px;
-    height: 150px;
-  }
-  .cardTitle {
-    font-size: 24px;
   }
 
   .cardDescription {
     font-size: 16px;
   }
-  .card1 {
-    transform: rotate(-5deg) translate(0%, 0);
-  }
-  .card2 {
-    transform: rotate(5deg) translate(0%, -5%);
-  }
-  .card3 {
-    transform: rotate(-5deg) translate(0%, -10%);
-  }
 
   .hiringButton {
-    width: 250px;
-    height: 75px;
+    font-size: 18px;
+    padding: 14px 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 0 0 100px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .cardsMobile {
+    gap: 80px;
+  }
+
+  .cardMobile {
+    min-height: 200px;
+  }
+
+  .cardTitle {
     font-size: 24px;
   }
 
-  .copyright {
+  .cardDescription {
     font-size: 14px;
+  }
+
+  .hiringButton {
+    font-size: 16px;
+    padding: 12px 32px;
   }
 }

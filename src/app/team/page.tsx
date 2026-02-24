@@ -10,7 +10,7 @@ export default function TeamPage() {
     <div className={styles.container}>
       <Navbar />
       <TeamSection />
-      <HiringSection variant="absolute" />
+      <HiringSection />
     </div>
   );
 }

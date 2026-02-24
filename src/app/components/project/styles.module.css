@@ -1,102 +1,200 @@
 .section {
-  min-height: 100vh;
-  background-color: #0c1529;
-  position: relative;
-  width: 100vw;
-  overflow: hidden;
-}
-
-.contentWrapper {
-  display: flex;
-  flex-direction: column;
-  padding-top: 200px;
-  justify-content: center;
+  width: 100%;
+  margin-top: 100px;
+  padding: 0 24px 80px;
 }
 
 .title {
-  color: white;
-  font-weight: 600;
-  font-size: 48px;
-  letter-spacing: 0.05em;
-  text-align: center;
+  font-size: 72px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.count {
+  font-size: 12px;
+  color: #6b7280;
+  font-family: monospace;
+  margin-left: 4px;
+  margin-top: 4px;
 }
 
 .projectList {
-  width: 80%;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 100px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .projectItem {
   display: flex;
   align-items: center;
-  gap: 20px;
-  color: white;
-  width: 100%;
+  justify-content: space-between;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.projectTitle {
-  font-weight: 700;
-  font-size: 32px;
-  margin-bottom: 20px;
+.projectItem:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.projectItem:hover .projectTitle {
+  color: #60a5fa;
+}
+
+.projectInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logoWrapper {
+  width: 160px;
+  height: 160px;
+  min-width: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projectLogo {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 12px;
 }
 
 .projectContent {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-.projectBottom {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.projectTitle {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  transition: color 0.2s ease;
 }
 
 .projectDescription {
-  font-size: 20px;
-  font-weight: 400;
-  color: #b0b8c1;
-  line-height: 1.5;
-}
-
-.projectLinks a {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: white;
-  text-decoration: underline;
-  font-size: 22px;
+  font-size: 24px;
+  color: #9ca3af;
+  font-weight: 300;
 }
 
 .projectStar {
-  color: white;
+  font-size: 24px;
+  font-family: monospace;
+  margin-top: 8px;
+  color: #6b7280;
+}
+
+.starCount {
   font-weight: 700;
-  font-size: 20px;
+}
+
+.starLabel {
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.projectLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  align-items: flex-end;
+}
+
+.projectLinks a {
+  font-size: 16px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.projectLinks a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 780px) {
+  .title {
+    font-size: 48px;
+  }
+
+  .projectItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .projectTitle {
+    font-size: 28px;
+  }
+
+  .projectDescription {
+    font-size: 16px;
+  }
+
+  .projectStar {
+    font-size: 16px;
+  }
+
+  .projectLinks {
+    flex-direction: row;
+    padding-left: 84px;
+  }
 }
 
 @media (max-width: 480px) {
-  .projectBottom {
-    flex-direction: column;
+  .section {
+    padding: 0 16px 60px;
+    margin-top: 60px;
   }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .projectInfo {
+    gap: 16px;
+  }
+
+  .logoWrapper {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+  }
+
+  .projectLogo {
+    width: 60px;
+    height: 60px;
+  }
+
   .projectTitle {
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 22px;
   }
 
   .projectDescription {
     font-size: 14px;
-    margin-bottom: 10px;
+  }
+
+  .projectStar {
+    font-size: 14px;
+  }
+
+  .projectLinks {
+    padding-left: 74px;
   }
 
   .projectLinks a {
     font-size: 14px;
-  }
-
-  .projectLogo {
-    width: 100px;
-    height: 100px;
   }
 }

@@ -1,11 +1,17 @@
-@import url('https://static.toss.im/tps/main.css');
-@import url('https://static.toss.im/tps/others.css');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+:root {
+  --z-base: 0;
+  --z-card: 1;
+  --z-sticky: 10;
+  --z-overlay: 20;
+  --z-navbar: 50;
+}
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Toss Product Sans', sans-serif;
 }
 
 html {
@@ -14,8 +20,31 @@ html {
 }
 
 body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #020202;
+  color: #ffffff;
   overflow-x: hidden;
   overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020202;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 a {
@@ -31,4 +60,5 @@ button {
   border: none;
   background: none;
   cursor: pointer;
+  font-family: inherit;
 }
