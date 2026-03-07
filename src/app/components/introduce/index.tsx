@@ -9,18 +9,44 @@ export const IntroduceSection = () => {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      video.playbackRate = 2;
-      const playVideo = () => {
-        video.play().catch(() => {});
-      };
+    if (!video) return;
 
-      if (video.readyState >= 1) {
-        playVideo();
+    const baseRate = 1;
+    const peakRate = 3;
+    const duration = 1000;
+    let startTime: number | null = null;
+    let animationId: number;
+
+    // 1x → 4x → 1x (중간에 살짝 빨라졌다가 돌아옴)
+    const bellCurve = (t: number) => Math.sin(t * Math.PI);
+
+    const updateRate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      video.playbackRate = baseRate + (peakRate - baseRate) * bellCurve(progress);
+
+      if (progress < 1) {
+        animationId = requestAnimationFrame(updateRate);
       } else {
-        video.addEventListener("loadedmetadata", playVideo, { once: true });
+        video.playbackRate = baseRate;
       }
+    };
+
+    const playVideo = () => {
+      video.playbackRate = baseRate;
+      video.play().catch(() => {});
+      animationId = requestAnimationFrame(updateRate);
+    };
+
+    if (video.readyState >= 1) {
+      playVideo();
+    } else {
+      video.addEventListener("loadedmetadata", playVideo, { once: true });
     }
+
+    return () => cancelAnimationFrame(animationId);
   }, []);
 
   return (
@@ -33,7 +59,6 @@ export const IntroduceSection = () => {
         playsInline
         preload="auto"
         autoPlay
-        loop
       />
 
       <div className={styles.shards}>
