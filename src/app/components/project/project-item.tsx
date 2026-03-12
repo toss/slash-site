@@ -21,7 +21,11 @@ export const ProjectItem = ({
     githubStats[name as keyof typeof githubStats]?.stargazers_count || 0;
 
   return (
-    <li className={styles.projectItem}>
+    <li
+      className={styles.projectItem}
+      onClick={() => window.open(websiteUrl, "_blank")}
+      style={{ cursor: "pointer" }}
+    >
       <div className={styles.projectInfo}>
         <div className={styles.logoWrapper}>
           <Image
