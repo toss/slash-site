@@ -12,24 +12,35 @@ export const IntroduceSection = () => {
     if (!video) return;
 
     let animationId: number;
-    const duration = 2000;
-    const minRate = 1;
-    const maxRate = 4;
+    const slowRate = 1;
+    const fastRate = 3;
+    const holdSlow = 400;  // 0.4초 느리게
+    const fastDur = 500;   // 0.5초 빠르게
+    const slowDown = 1000; // 1초 감속
 
-    // sin 벨 커브: 0.8x → 2.5x → 0.8x
     const tick = (now: number, start: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      video.playbackRate = minRate + (maxRate - minRate) * Math.sin(progress * Math.PI);
+      const elapsed = now - start;
+      const total = holdSlow + fastDur + slowDown;
 
-      if (progress < 1) {
-        animationId = requestAnimationFrame((t) => tick(t, start));
+      if (elapsed < holdSlow) {
+        video.playbackRate = slowRate;
+      } else if (elapsed < holdSlow + fastDur) {
+        const p = (elapsed - holdSlow) / fastDur;
+        video.playbackRate = slowRate + (fastRate - slowRate) * Math.sin(p * Math.PI);
+      } else if (elapsed < total) {
+        const p = (elapsed - holdSlow - fastDur) / slowDown;
+        video.playbackRate = slowRate + (1 - slowRate) * p;
       } else {
         video.playbackRate = 1;
+      }
+
+      if (elapsed < total) {
+        animationId = requestAnimationFrame((t) => tick(t, start));
       }
     };
 
     const playVideo = () => {
-      video.playbackRate = minRate;
+      video.playbackRate = slowRate;
       video.play().catch(() => {});
       animationId = requestAnimationFrame((t) => tick(t, t));
     };
