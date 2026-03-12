@@ -12,9 +12,9 @@ export const IntroduceSection = () => {
     if (!video) return;
 
     let animationId: number;
-    const duration = 2500;
-    const minRate = 0.8;
-    const maxRate = 2.5;
+    const duration = 2000;
+    const minRate = 1;
+    const maxRate = 4;
 
     // sin 벨 커브: 0.8x → 2.5x → 0.8x
     const tick = (now: number, start: number) => {
@@ -53,7 +53,6 @@ export const IntroduceSection = () => {
         playsInline
         preload="auto"
         autoPlay
-        loop
       />
 
       <div className={styles.shards}>
