@@ -21,22 +21,27 @@ export const TeamSection = () => {
     <section className={styles.section}>
       <h2 className={styles.title}>Team</h2>
       <div className={styles.grid}>
-        {MEMBERS.map((member) => (
-          <div className={styles.card} key={member.name}>
+        {MEMBERS.map((member, index) => {
+          const isRight = index % 2 === 1;
+
+          const info = (
             <div className={styles.cardInfo}>
-              <div>
-                <div className={styles.name}>{member.name}</div>
-                <div className={styles.position}>{member.position}</div>
+              <span className={styles.name}>{member.name}</span>
+              <div className={styles.cardMeta}>
+                <span className={styles.position}>{member.position}</span>
+                <a
+                  href={member.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.githubLink}
+                >
+                  GitHub <ArrowUpRight size={14} />
+                </a>
               </div>
-              <a
-                href={member.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.githubLink}
-              >
-                GitHub <ArrowUpRight size={14} />
-              </a>
             </div>
+          );
+
+          const photo = (
             <div className={styles.cardPhoto}>
               <Image
                 src={member.imageUrl}
@@ -46,8 +51,24 @@ export const TeamSection = () => {
                 className={styles.photo}
               />
             </div>
-          </div>
-        ))}
+          );
+
+          return (
+            <div className={styles.card} key={member.name}>
+              {isRight ? (
+                <>
+                  {photo}
+                  {info}
+                </>
+              ) : (
+                <>
+                  {info}
+                  {photo}
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
   );

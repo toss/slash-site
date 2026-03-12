@@ -22,27 +22,31 @@
   justify-content: space-between;
   align-items: stretch;
   background-color: #020202;
-  padding: 32px;
+  padding: 8px;
   min-height: 240px;
 }
 
 .cardInfo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
   flex: 1;
+  padding-top: 16px;
+  border-top: 1px solid #ffffff;
 }
 
 .name {
-  font-size: 28px;
+  font-size: 16px;
   font-weight: 500;
   color: #ffffff;
-  margin-bottom: 8px;
+  white-space: nowrap;
 }
 
 .position {
   font-size: 16px;
-  color: #6b7280;
+  color: #ffffff;
+  white-space: nowrap;
 }
 
 .githubLink {
@@ -50,25 +54,32 @@
   align-items: center;
   gap: 4px;
   font-size: 14px;
-  color: #6b7280;
+  color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 4px;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .githubLink:hover {
   color: #ffffff;
 }
 
+.cardMeta {
+  display: contents;
+}
+
 .cardPhoto {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-shrink: 0;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .photo {
-  width: 160px;
-  height: 200px;
+  width: 256px;
+  height: 256px;
   object-fit: cover;
   filter: grayscale(100%);
   transition: filter 0.3s ease;
@@ -88,17 +99,42 @@
   }
 
   .card {
-    padding: 24px;
-    min-height: 200px;
+    padding: 8px 0;
+    min-height: auto;
+  }
+
+  .cardPhoto {
+    order: -1;
+    margin-left: 0;
+    margin-right: 8px;
+  }
+
+  .cardInfo {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+    border-top: 1px solid #ffffff;
+    padding-top: 8px;
+  }
+
+  .cardMeta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
   }
 
   .name {
-    font-size: 22px;
+    font-size: 16px;
+  }
+
+  .position {
+    font-size: 14px;
   }
 
   .photo {
-    width: 120px;
-    height: 160px;
+    width: 80px;
+    height: 80px;
   }
 }
 
@@ -114,19 +150,22 @@
 
   .card {
     padding: 20px;
-    min-height: 160px;
   }
 
   .name {
-    font-size: 18px;
-  }
-
-  .position {
     font-size: 14px;
   }
 
+  .position {
+    font-size: 13px;
+  }
+
+  .githubLink {
+    font-size: 13px;
+  }
+
   .photo {
-    width: 100px;
-    height: 130px;
+    width: 64px;
+    height: 64px;
   }
 }
