@@ -11,39 +11,38 @@ export const IntroduceSection = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    const baseRate = 1;
-    const peakRate = 3;
-    const duration = 1000;
-    let startTime: number | null = null;
     let animationId: number;
 
-    // 1x → 4x → 1x (중간에 살짝 빨라졌다가 돌아옴)
-    const bellCurve = (t: number) => Math.sin(t * Math.PI);
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
-    const updateRate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+    const easePlayback = (from: number, to: number, duration = 1000) => {
+      const startTime = performance.now();
+      video.pause();
 
-      video.playbackRate = baseRate + (peakRate - baseRate) * bellCurve(progress);
+      const tick = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutCubic(progress);
 
-      if (progress < 1) {
-        animationId = requestAnimationFrame(updateRate);
-      } else {
-        video.playbackRate = baseRate;
-      }
+        video.currentTime = from + (to - from) * eased;
+
+        if (progress < 1) {
+          animationId = requestAnimationFrame(tick);
+        }
+      };
+
+      requestAnimationFrame(tick);
     };
 
-    const playVideo = () => {
-      video.playbackRate = baseRate;
-      video.play().catch(() => {});
-      animationId = requestAnimationFrame(updateRate);
+    const startPlayback = () => {
+      const to = Math.min(video.duration, 3);
+      easePlayback(0, to, 1000);
     };
 
     if (video.readyState >= 1) {
-      playVideo();
+      startPlayback();
     } else {
-      video.addEventListener("loadedmetadata", playVideo, { once: true });
+      video.addEventListener("loadedmetadata", startPlayback, { once: true });
     }
 
     return () => cancelAnimationFrame(animationId);
