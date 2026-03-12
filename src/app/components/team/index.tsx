@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import styles from "./styles.module.css";
-import githubIcon from "@/assets/github.png";
 
 import sojinPark from "@/assets/images/people/sojin-park.jpeg";
 import dongwookMoon from "@/assets/images/people/dongwook-moon.jpeg";
@@ -18,46 +18,38 @@ import myounghoPark from "@/assets/images/people/myoungho-park.jpeg";
 
 export const TeamSection = () => {
   return (
-    <div className={styles.section}>
-      <div className={styles.title}>TEAM</div>
-      <div className={styles.membersContainer}>
+    <section className={styles.section}>
+      <h2 className={styles.title}>Team</h2>
+      <div className={styles.grid}>
         {MEMBERS.map((member) => (
-          <div className={styles.member} key={member.name}>
-            <div className={styles.memberImage}>
+          <div className={styles.card} key={member.name}>
+            <div className={styles.cardInfo}>
+              <div>
+                <div className={styles.name}>{member.name}</div>
+                <div className={styles.position}>{member.position}</div>
+              </div>
+              <a
+                href={member.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.githubLink}
+              >
+                GitHub <ArrowUpRight size={14} />
+              </a>
+            </div>
+            <div className={styles.cardPhoto}>
               <Image
                 src={member.imageUrl}
                 alt={member.name}
-                width={100}
-                height={100}
+                width={200}
+                height={240}
+                className={styles.photo}
               />
-            </div>
-            <div className={styles.memberName}>{member.name}</div>
-            <div className={styles.memberPosition}>{member.position}</div>
-            <div className={styles.memberGithub}>
-              <a
-                href={member.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {member.githubId}
-              </a>
-              <a
-                href={member.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src={githubIcon}
-                  alt="github link"
-                  width={16}
-                  height={16}
-                />
-              </a>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

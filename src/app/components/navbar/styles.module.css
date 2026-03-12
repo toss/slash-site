@@ -27,6 +27,8 @@
 .list li a {
   color: inherit;
   text-decoration: none;
+  font-size: 32px;
+  font-weight: 500;
 }
 
 .logo {
