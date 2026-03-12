@@ -9,18 +9,43 @@ export const IntroduceSection = () => {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      video.playbackRate = 2;
-      const playVideo = () => {
-        video.play().catch(() => {});
+    if (!video) return;
+
+    let animationId: number;
+
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    const easePlayback = (from: number, to: number, duration = 1000) => {
+      const startTime = performance.now();
+      video.pause();
+
+      const tick = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutCubic(progress);
+
+        video.currentTime = from + (to - from) * eased;
+
+        if (progress < 1) {
+          animationId = requestAnimationFrame(tick);
+        }
       };
 
-      if (video.readyState >= 1) {
-        playVideo();
-      } else {
-        video.addEventListener("loadedmetadata", playVideo, { once: true });
-      }
+      requestAnimationFrame(tick);
+    };
+
+    const startPlayback = () => {
+      const to = Math.min(video.duration, 3);
+      easePlayback(0, to, 1000);
+    };
+
+    if (video.readyState >= 1) {
+      startPlayback();
+    } else {
+      video.addEventListener("loadedmetadata", startPlayback, { once: true });
     }
+
+    return () => cancelAnimationFrame(animationId);
   }, []);
 
   return (
@@ -33,7 +58,6 @@ export const IntroduceSection = () => {
         playsInline
         preload="auto"
         autoPlay
-        loop
       />
 
       <div className={styles.shards}>
