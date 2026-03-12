@@ -39,7 +39,22 @@
 }
 
 .projectItem:hover .projectTitle {
-  color: #60a5fa;
+  color: inherit;
+}
+
+.cursor {
+  font-weight: 300;
+  opacity: 0;
+  animation: blink 0.8s step-end infinite;
+}
+
+.projectItem:hover .cursor {
+  opacity: 1;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .projectInfo {
