@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./page.module.css";
+import { Navbar } from "./components/navbar";
 import { IntroduceSection } from "./components/introduce";
 import { ProjectSection } from "./components/project";
 import { DownloadsSection } from "./components/downloads";
@@ -11,6 +12,7 @@ import { Footer } from "./components/footer";
 export default function Home() {
   return (
     <div className={styles.container}>
+      <Navbar showOnScroll />
       <IntroduceSection />
       <ProjectSection />
       <DownloadsSection />

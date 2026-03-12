@@ -9,6 +9,15 @@
   z-index: var(--z-navbar);
   color: white;
   font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.visible {
+  transform: translateY(0);
+}
+
+.hidden {
+  transform: translateY(-100%);
 }
 
 .list {
@@ -32,8 +41,12 @@
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 500;
   display: flex;
   align-items: baseline;
+}
+
+.logoSlash {
+  font-size: 22px;
 }
