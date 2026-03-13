@@ -23,7 +23,7 @@ export const ProjectItem = ({
   const starCount =
     githubStats[name as keyof typeof githubStats]?.stargazers_count || 0;
 
-  const { displayText, isAnimating, trigger } = useTypingEffect(name);
+  const { displayText, trigger } = useTypingEffect(name);
 
   return (
     <li
@@ -44,7 +44,7 @@ export const ProjectItem = ({
         </div>
         <div className={styles.projectContent}>
           <h3 className={styles.projectTitle}>
-            {displayText}
+            yarn add {displayText}
             <span className={styles.cursor}>|</span>
           </h3>
           <p className={styles.projectDescription}>{description}</p>

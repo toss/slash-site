@@ -36,42 +36,42 @@ const PROJECTS: {
   githubUrl: string;
 }[] = [
   {
-    name: "es toolkit",
+    name: "es-toolkit",
     description: "Focused TypeScript utilities for tests & DX.",
     logoUrl: esToolkitLogo,
     websiteUrl: "https://es-toolkit.dev/",
     githubUrl: "https://github.com/toss/es-toolkit",
   },
   {
-    name: "es git",
+    name: "es-git",
     description: "Fast Git data access utilities for Node environments.",
     logoUrl: esGitLogo,
     websiteUrl: "https://es-git.dev/",
     githubUrl: "https://github.com/toss/es-git",
   },
   {
-    name: "es hangul",
+    name: "es-hangul",
     description: "Utilities for Hangul parsing, particles, and matching.",
     logoUrl: esHangulLogo,
     websiteUrl: "https://es-hangul.slash.page/",
     githubUrl: "https://github.com/toss/es-hangul",
   },
   {
-    name: "react simplikit",
+    name: "react-simplikit",
     description: "Lightweight React utilities and hooks for everyday use.",
     logoUrl: simplikitLogo,
     websiteUrl: "https://react-simplikit.slash.page/intro.html",
     githubUrl: "https://github.com/toss/react-simplikit",
   },
   {
-    name: "use funnel",
+    name: "use-funnel",
     description: "Type-safe UI flow management for multi-step screens.",
     logoUrl: useFunnelLogo,
     websiteUrl: "https://use-funnel.slash.page/",
     githubUrl: "https://github.com/toss/use-funnel",
   },
   {
-    name: "overlay kit",
+    name: "overlay-kit",
     description:
       "Declarative overlay primitives for modals, popovers, and dialogs.",
     logoUrl: overlayKitLogo,
@@ -79,9 +79,8 @@ const PROJECTS: {
     githubUrl: "https://github.com/toss/overlay-kit",
   },
   {
-    name: "Suspensive",
-    description:
-      "Practical building blocks for React Suspense in production.",
+    name: "suspensive",
+    description: "Practical building blocks for React Suspense in production.",
     logoUrl: suspensiveLogo,
     websiteUrl: "https://suspensive.org/",
     githubUrl: "https://github.com/toss/suspensive",

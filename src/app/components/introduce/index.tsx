@@ -11,47 +11,8 @@ export const IntroduceSection = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    let animationId: number;
-    const slowRate = 1;
-    const fastRate = 3;
-    const holdSlow = 400;  // 0.4초 느리게
-    const fastDur = 500;   // 0.5초 빠르게
-    const slowDown = 1000; // 1초 감속
-
-    const tick = (now: number, start: number) => {
-      const elapsed = now - start;
-      const total = holdSlow + fastDur + slowDown;
-
-      if (elapsed < holdSlow) {
-        video.playbackRate = slowRate;
-      } else if (elapsed < holdSlow + fastDur) {
-        const p = (elapsed - holdSlow) / fastDur;
-        video.playbackRate = slowRate + (fastRate - slowRate) * Math.sin(p * Math.PI);
-      } else if (elapsed < total) {
-        const p = (elapsed - holdSlow - fastDur) / slowDown;
-        video.playbackRate = slowRate + (1 - slowRate) * p;
-      } else {
-        video.playbackRate = 1;
-      }
-
-      if (elapsed < total) {
-        animationId = requestAnimationFrame((t) => tick(t, start));
-      }
-    };
-
-    const playVideo = () => {
-      video.playbackRate = slowRate;
-      video.play().catch(() => {});
-      animationId = requestAnimationFrame((t) => tick(t, t));
-    };
-
-    if (video.readyState >= 1) {
-      playVideo();
-    } else {
-      video.addEventListener("loadedmetadata", playVideo, { once: true });
-    }
-
-    return () => cancelAnimationFrame(animationId);
+    video.playbackRate = 1;
+    video.play().catch(() => {});
   }, []);
 
   return (
@@ -59,11 +20,12 @@ export const IntroduceSection = () => {
       <video
         ref={videoRef}
         className={styles.backgroundVideo}
-        src="/background-small.mp4"
+        src="/background.mp4"
         muted
         playsInline
         preload="auto"
         autoPlay
+        loop
       />
 
       <div className={styles.shards}>

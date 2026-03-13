@@ -147,13 +147,6 @@ const MEMBERS: MemberInfo[] = [
     githubUrl: "https://github.com/dayongkr",
   },
   {
-    name: "Juhyeok Kang",
-    position: "Toss Team",
-    imageUrl: juhyeokKang,
-    githubId: "kangju2000",
-    githubUrl: "https://github.com/kangju2000",
-  },
-  {
     name: "Seonjin Kim",
     position: "Toss Team",
     imageUrl: seonjinKim,
