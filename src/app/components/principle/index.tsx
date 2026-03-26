@@ -36,8 +36,7 @@ export const PrincipleSection = () => {
     offset: ["start start", "end start"],
   });
 
-  // 타이틀이 뷰포트 상단에 닿았을 때 fixed로 전환
-  useEffect(() => {
+  useEffect(function fixTitleOnScroll() {
     const handleScroll = () => {
       if (titleRef.current) {
         const rect = titleRef.current.getBoundingClientRect();
@@ -78,7 +77,9 @@ const Card = ({ card, index, scrollYProgress }: CardProps) => {
 
   const isFirst = index === 0;
   const adjustedIndex = isFirst ? 0 : index - 1;
-  const triggerPoint = isFirst ? 0.005 : (adjustedIndex + 1) * SCROLL_CONFIG.TRIGGER_MULTIPLIER;
+  const triggerPoint = isFirst
+    ? 0.005
+    : (adjustedIndex + 1) * SCROLL_CONFIG.TRIGGER_MULTIPLIER;
   const endPoint = triggerPoint + SCROLL_CONFIG.END_OFFSET;
 
   const cardOpacity = useTransform(
@@ -96,6 +97,9 @@ const Card = ({ card, index, scrollYProgress }: CardProps) => {
     index * SCROLL_CONFIG.LEFT_POSITION_INCREMENT;
 
   const zIndex = isHovered ? 5 : index;
+  const pointerEvents = useTransform(cardOpacity, (v) =>
+    v > 0 ? "auto" : "none",
+  );
 
   return (
     <motion.div
@@ -107,6 +111,7 @@ const Card = ({ card, index, scrollYProgress }: CardProps) => {
         y: yTransform,
         left: `${leftPercentage}%`,
         opacity: cardOpacity,
+        pointerEvents,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

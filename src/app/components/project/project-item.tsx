@@ -28,7 +28,14 @@ export const ProjectItem = ({
   return (
     <li
       className={styles.projectItem}
-      onClick={() => window.open(websiteUrl, "_blank")}
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest("a")) return;
+        const link = document.createElement("a");
+        link.href = websiteUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.click();
+      }}
       style={{ cursor: "pointer" }}
       onMouseEnter={trigger}
     >
@@ -52,7 +59,7 @@ export const ProjectItem = ({
             <span className={styles.starCount}>
               {formatNumberWithUnit(starCount)}
             </span>{" "}
-            <span className={styles.starLabel}>Github stars</span>
+            <span className={styles.starLabel}>GitHub stars</span>
           </p>
         </div>
       </div>
@@ -71,7 +78,7 @@ export const ProjectItem = ({
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
         >
-          Github <ArrowUpRight size={12} />
+          GitHub <ArrowUpRight size={12} />
         </a>
       </div>
     </li>

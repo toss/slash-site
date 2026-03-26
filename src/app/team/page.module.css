@@ -1,5 +1,7 @@
 .container {
   padding-top: 86px;
+  padding-bottom: 300px;
   width: 100%;
+  min-height: 200vh;
   background-color: #020202;
 }
