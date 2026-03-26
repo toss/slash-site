@@ -52,32 +52,20 @@ export const IntroduceSection = () => {
           </p>
         </div>
 
-        <div className={styles.trustedBy}>
-          <div className={styles.description}>
-            <p>Trusted by teams at</p>
-          </div>
-          <div className={styles.trustedByLogos}>
-            <img
-              src="/other-logos/yarn.svg"
-              alt="Yarn"
-              className={styles.trustedLogo}
-            />
-            <img
-              src="/other-logos/microsoft.svg"
-              alt="Microsoft"
-              className={styles.trustedLogo}
-            />
-            <img
-              src="/other-logos/storybook.svg"
-              alt="Storybook"
-              className={styles.trustedLogo}
-            />
-            <img
-              src="/other-logos/jest-dom.svg"
-              alt="Jest Dom"
-              className={styles.trustedLogo}
-            />
-          </div>
+        <div className={styles.usedBy}>
+          <span className={styles.usedByLabel}>Used by</span>
+          <span className={styles.usedByNames}>
+            {["Yarn Berry", "MUI", "Storybook", "ink", "Recharts", "CKEditor"].map(
+              (name, i, arr) => (
+                <span key={name}>
+                  {name}
+                  {i < arr.length - 1 && (
+                    <span className={styles.usedBySeparator}>/</span>
+                  )}
+                </span>
+              ),
+            )}
+          </span>
         </div>
       </div>
     </header>

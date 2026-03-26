@@ -19,9 +19,14 @@ const Resolved = () => {
 
   const now = new Date();
   const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
-  const chartData = (npmStats.monthlyData || []).filter(
+  const filteredData = (npmStats.monthlyData || []).filter(
     (d) => d.fullDate < currentMonth
   );
+  let cumulative = 0;
+  const chartData = filteredData.map((d) => {
+    cumulative += d.downloads;
+    return { ...d, downloads: cumulative };
+  });
 
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);

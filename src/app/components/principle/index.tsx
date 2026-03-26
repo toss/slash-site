@@ -75,13 +75,16 @@ export const PrincipleSection = () => {
 
 const Card = ({ card, index, scrollYProgress }: CardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const triggerPoint = (index + 1) * SCROLL_CONFIG.TRIGGER_MULTIPLIER;
+
+  const isFirst = index === 0;
+  const adjustedIndex = isFirst ? 0 : index - 1;
+  const triggerPoint = isFirst ? 0.005 : (adjustedIndex + 1) * SCROLL_CONFIG.TRIGGER_MULTIPLIER;
   const endPoint = triggerPoint + SCROLL_CONFIG.END_OFFSET;
 
   const cardOpacity = useTransform(
     scrollYProgress,
-    [triggerPoint, endPoint],
-    [0, 1],
+    isFirst ? [0, triggerPoint, endPoint] : [triggerPoint, endPoint],
+    isFirst ? [0, 1, 1] : [0, 1],
   );
 
   const yTransform = `${
