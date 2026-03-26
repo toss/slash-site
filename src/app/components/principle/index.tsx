@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, MotionValue, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  MotionValue,
+  useInView,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
@@ -31,6 +37,8 @@ export const PrincipleSection = () => {
   const titleRef = useRef<HTMLDivElement>(null);
   const [isTitleFixed, setIsTitleFixed] = useState(false);
 
+  const isInView = useInView(sectionRef, { margin: "0px 0px -10% 0px" });
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -59,14 +67,16 @@ export const PrincipleSection = () => {
         </h2>
       </div>
       <motion.div className={styles.cardsContainer}>
-        {CARDS.map((card, index) => (
-          <Card
-            key={card.id}
-            card={card}
-            index={index}
-            scrollYProgress={scrollYProgress}
-          />
-        ))}
+        {isInView
+          ? CARDS.map((card, index) => (
+              <Card
+                key={card.id}
+                card={card}
+                index={index}
+                scrollYProgress={scrollYProgress}
+              />
+            ))
+          : null}
       </motion.div>
     </motion.section>
   );
@@ -96,10 +106,7 @@ const Card = ({ card, index, scrollYProgress }: CardProps) => {
     SCROLL_CONFIG.LEFT_POSITION_BASE +
     index * SCROLL_CONFIG.LEFT_POSITION_INCREMENT;
 
-  const zIndex = isHovered ? 5 : index;
-  const pointerEvents = useTransform(cardOpacity, (v) =>
-    v > 0 ? "auto" : "none",
-  );
+  const zIndex = isHovered ? CARDS.length + 1 : index;
 
   return (
     <motion.div
@@ -111,7 +118,6 @@ const Card = ({ card, index, scrollYProgress }: CardProps) => {
         y: yTransform,
         left: `${leftPercentage}%`,
         opacity: cardOpacity,
-        pointerEvents,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
