@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 
 interface ChartDataPoint {
@@ -13,6 +14,9 @@ export const DownloadsChart = ({
   data: ChartDataPoint[];
   isVisible: boolean;
 }) => {
+  const pathRef = useRef<SVGPathElement>(null);
+  const [pathLength, setPathLength] = useState(0);
+
   const maxDownloads = Math.max(...data.map((d) => d.downloads));
 
   const pathD = data.reduce((acc, d, i) => {
@@ -27,14 +31,16 @@ export const DownloadsChart = ({
   }, "");
 
   const lastX = 1000;
-  const lastY =
-    200 - (data[data.length - 1].downloads / maxDownloads) * 180;
+  const lastY = 200 - (data[data.length - 1].downloads / maxDownloads) * 180;
+
+  useEffect(() => {
+    if (pathRef.current) {
+      setPathLength(pathRef.current.getTotalLength());
+    }
+  }, [pathD]);
 
   return (
-    <div
-      className={styles.chartContainer}
-      style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.8s ease" }}
-    >
+    <div className={styles.chartContainer}>
       <svg viewBox="0 0 1000 200" className={styles.chart}>
         <line
           x1="0"
@@ -55,13 +61,26 @@ export const DownloadsChart = ({
           opacity="0.3"
         />
         <path
+          ref={pathRef}
           d={pathD}
           fill="none"
           stroke="#ffffff"
           strokeWidth="3"
           strokeLinecap="round"
+          strokeDasharray={pathLength}
+          strokeDashoffset={isVisible ? 0 : pathLength}
+          style={{ transition: "stroke-dashoffset 2s ease-out" }}
         />
-        <circle cx={lastX} cy={lastY} r="4" fill="#ffffff" />
+        <circle
+          cx={lastX}
+          cy={lastY}
+          r="4"
+          fill="#ffffff"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transition: "opacity 0.3s ease 2s",
+          }}
+        />
       </svg>
       <div className={styles.chartLabel}>Project Downloads</div>
     </div>
