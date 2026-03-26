@@ -4,31 +4,31 @@ require("dotenv").config({ path: path.join(__dirname, "..", ".env.local") });
 
 const PROJECTS = [
   {
-    name: "es toolkit",
+    name: "es-toolkit",
     url: "/es-toolkit",
   },
   {
-    name: "es git",
+    name: "es-git",
     url: "/es-git",
   },
   {
-    name: "es hangul",
+    name: "es-hangul",
     url: "/es-hangul",
   },
   {
-    name: "overlay kit",
+    name: "overlay-kit",
     url: "/overlay-kit",
   },
   {
-    name: "react simplikit",
+    name: "react-simplikit",
     url: "/react-simplikit",
   },
   {
-    name: "use funnel",
+    name: "use-funnel",
     url: "/use-funnel",
   },
   {
-    name: "Suspensive",
+    name: "suspensive",
     url: "/suspensive",
   },
 ];
