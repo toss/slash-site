@@ -39,7 +39,7 @@ const PROJECTS: {
     name: "es-toolkit",
     description: "Focused TypeScript utilities for tests & DX.",
     logoUrl: esToolkitLogo,
-    websiteUrl: "https://es-toolkit.dev/en",
+    websiteUrl: "https://es-toolkit.dev",
     githubUrl: "https://github.com/toss/es-toolkit",
   },
   {
@@ -68,21 +68,21 @@ const PROJECTS: {
     name: "use-funnel",
     description: "Type-safe UI flow management for multi-step screens.",
     logoUrl: useFunnelLogo,
-    websiteUrl: "https://use-funnel.slash.page/en",
+    websiteUrl: "https://use-funnel.slash.page",
     githubUrl: "https://github.com/toss/use-funnel",
   },
   {
     name: "es-git",
     description: "Fast Git data access utilities for Node environments.",
     logoUrl: esGitLogo,
-    websiteUrl: "https://es-git.dev/en",
+    websiteUrl: "https://es-git.dev",
     githubUrl: "https://github.com/toss/es-git",
   },
   {
     name: "react-simplikit",
     description: "Lightweight React utilities and hooks for everyday use.",
     logoUrl: simplikitLogo,
-    websiteUrl: "https://react-simplikit.slash.page/en",
+    websiteUrl: "https://react-simplikit.slash.page",
     githubUrl: "https://github.com/toss/react-simplikit",
   },
 ];
