@@ -38,14 +38,16 @@ async function fetchGitHubStats() {
 
   for (const project of PROJECTS) {
     try {
+      const headers = {
+        "User-Agent": "monad-project",
+      };
+      if (process.env.NEXT_PUBLIC_GITHUB_TOKEN) {
+        headers.Authorization = `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
+      }
+
       const response = await fetch(
         `https://api.github.com/repos/toss${project.url}`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
-            "User-Agent": "monad-project",
-          },
-        }
+        { headers }
       );
 
       if (response.ok) {
