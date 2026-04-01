@@ -39,9 +39,9 @@ async function fetchGitHubStats() {
   for (const project of PROJECTS) {
     try {
       const headers = {
-        "User-Agent": "monad-project",
+        "User-Agent": "slash-page",
       };
-      if (process.env.NEXT_PUBLIC_GITHUB_TOKEN) {
+      if (process.env.NEXT_PUBLIC_GITHUB_TOKEN != null) {
         headers.Authorization = `Bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
       }
 
