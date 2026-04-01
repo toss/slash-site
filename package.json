@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node scripts/fetch-github-stats.js && node scripts/fetch-npm-stats.js",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
