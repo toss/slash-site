@@ -1,5 +1,9 @@
 # Downloads 섹션 설계 분석 & AI 가이드
 
+## Figma
+
+[Toss Opensource Committee Website](https://www.figma.com/design/aQ6Ihz8lUwaA6vxrJyrwKO/Toss-Opensource-Committee-website?node-id=0-1&p=f&t=pHbVUtfwoZQsinDx-0)
+
 ## 1. 전체 아키텍처
 
 ```
