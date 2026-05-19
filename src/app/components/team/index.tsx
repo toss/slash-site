@@ -4,7 +4,6 @@ import styles from "./styles.module.css";
 
 import sojinPark from "@/assets/images/people/sojin-park.jpeg";
 import dongwookMoon from "@/assets/images/people/dongwook-moon.jpeg";
-import jonghyeonKo from "@/assets/images/people/jonghyeon-ko.jpeg";
 import sanghyeonSong from "@/assets/images/people/song-sang-hyun.jpeg";
 import chanhyuckPark from "@/assets/images/people/okinawaa.png";
 import yunhoKim from "@/assets/images/people/kim-you-know.jpeg";
@@ -96,13 +95,6 @@ const MEMBERS: MemberInfo[] = [
     imageUrl: dongwookMoon,
     githubId: "evan-moon",
     githubUrl: "https://github.com/evan-moon",
-  },
-  {
-    name: "Jonghyeon Ko",
-    position: "Toss Team",
-    imageUrl: jonghyeonKo,
-    githubId: "manudeli",
-    githubUrl: "https://github.com/manudeli",
   },
   {
     name: "Sanghyeon Song",
