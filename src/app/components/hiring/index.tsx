@@ -58,7 +58,7 @@ export const HiringSection = () => {
 
       <div className={styles.buttonWrapper}>
         <a
-          href="https://toss.im/career/job-detail?job_id=4664498003"
+          href="https://toss.im/career/jobs?search=Frontend"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.hiringButton}
